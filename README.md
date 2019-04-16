@@ -1,6 +1,6 @@
 # NeoDEEX Samples
 
-![NeoDEEX Logo](images/NeoDEEX_Logo_PPT.png)
+![NeoDEEX Logo](images/neodeex_logo_ppt.png)
 
 NeoDEEX에 관련된 다양한 예제 코드를 제공하는 오픈 소스 프로젝트 입니다. 예제들은 NeoDEEX의 기능들(Fox Logging, Fox Query, Fox Web Service, Fox WinForm 등)로 구분되어 하위 폴더 내에 존재합니다.
 
