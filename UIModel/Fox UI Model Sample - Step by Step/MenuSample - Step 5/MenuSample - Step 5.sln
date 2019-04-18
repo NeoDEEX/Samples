@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuSampleApp", "MenuSampleApp\MenuSampleApp.csproj", "{42C071B0-B571-4018-9EDC-8F921CF7F982}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC} = {F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIModules", "UIModules\UIModules.csproj", "{F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42C071B0-B571-4018-9EDC-8F921CF7F982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C071B0-B571-4018-9EDC-8F921CF7F982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C071B0-B571-4018-9EDC-8F921CF7F982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C071B0-B571-4018-9EDC-8F921CF7F982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5D682C5-FAC5-48FD-9BA2-AB857E71E7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

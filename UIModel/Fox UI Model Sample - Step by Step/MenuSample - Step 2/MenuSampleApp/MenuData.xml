@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<menuTree>
+  <menuItem id="10" title="화면예제">
+    <menuItem id="1010" title="화면예제1" />
+    <menuItem id="1020" title="화면예제2" />
+    <menuItem id="1030" title="하위그룹">
+      <menuItem id="1031" title="화면예제3" />
+      <menuItem id="1032" title="화면예제4" />
+    </menuItem>
+  </menuItem>
+  <menuItem id="20" title="권한예제" />
+  <menuItem id="30" title="인사관리" />
+  <menuItem id="40" title="시스템관리"/>
+</menuTree>

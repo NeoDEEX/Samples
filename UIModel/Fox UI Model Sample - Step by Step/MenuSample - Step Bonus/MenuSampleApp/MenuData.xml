@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<menuTree>
+  <menuItem id="10" title="화면예제" expanded="true">
+    <menuItem id="1010" title="화면예제1" url="UIModules.dll" class="UIModules.SampleForm1" />
+    <menuItem id="1020" title="화면예제2" url="UIModules.dll" class="UIModules.SampleForm2" />
+    <menuItem id="1030" title="하위그룹">
+      <menuItem id="1031" title="화면예제3" url="UIModules.dll" class="UIModules.SampleForm3" />
+      <menuItem id="1032" title="화면예제4" url="UIModules.dll" class="UIModules.SampleForm4" />
+      <menuItem id="1033" title="웹 서버" action="Custom" url="http://www.neodeex.net" />
+    </menuItem>
+  </menuItem>
+  <menuItem id="20" title="권한예제" />
+  <menuItem id="30" title="인사관리" />
+  <menuItem id="40" title="시스템관리"/>
+</menuTree>
