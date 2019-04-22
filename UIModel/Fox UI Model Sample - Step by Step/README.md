@@ -4,4 +4,6 @@ Fox UI Model을 사용하여 메뉴 데이터를 메뉴로서 표시하고 메�
 
 이 예제에 대한 설명은 메뉴얼을 참고 하십시오.
 
-> gitbook 링크 필요!
+[메뉴 뷰 작성 Step-by-Step 예제 매뉴얼](https://github.com/neodeex/manual/tree/master/uimodel/tutorial.md)
+
+---
