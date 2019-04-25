@@ -2,7 +2,7 @@
 
 [Fox Data Service](https://github.com/NeoDEEX/manual/tree/master/webservice/dataservice/introduction.md)를 사용하여 데이터를 조회하고 그 결과를 [RealGrid](https://www.realgrid.com/)에 바인딩하는 예제 입니다.
 
-![RealGridApp with Fox Data Service](realgridapp.png)
+![RealGridApp with Fox Data Service](RealGridApp.png)
 
 > 주의: RealGrid 예제를 구동하기 위해서는 RealGrid 라이선스 파일(realgridjs-lic.js)이 필요합니다. 이 예제에 포함된 라이선스는 개발용이며 2019년 5월 22일까지만 유요합니다. 갱신된 라이선스를 획득하기 위해서는 [RealGrid](https://www.realgrid.com/)와 연락하시기 바랍니다.
 
