@@ -52,7 +52,7 @@ RealGrid에 데이터를 바인딩하기 위해서는 `LocalDataProvider` 객체
 
 > Table, Table1, Table2 등은 `DataSet` 내부에 사용된 `DataTable`의 이름입니다. 현재 Fox Data Service에서 이 테이블 이름을 변경할 수 있는 방법은 없습니다. 다만, Fox Biz Service를 사용하면 임의의 테이블 이름으로 조회가 가능합니다.
 
-다음 코드는 Fox Data Service를 호출하고 그 결과를 RealGrid에 바인딩하는 예제 코드 입니다. 상세한 내용은 [index.cshtml](RealGridApp/Views/Home/index.cshtml) 코드를 참조 하십시오.
+다음 코드는 Fox Data Service를 호출하고 그 결과를 RealGrid에 바인딩하는 예제 코드 입니다. 상세한 내용은 [index.cshtml](RealGridApp/Views/Home/Index.cshtml) 코드를 참조 하십시오.
 
 ```csharp
 // Fox Data Service를 호출하고 호출 결과를 RealGrid에 바인딩하여 결과를 표시한다.
