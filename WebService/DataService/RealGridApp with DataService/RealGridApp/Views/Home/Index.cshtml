@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>How to set data into RealGrid from Fox Data Service</h2>
+
+<p>Fox Data Service를 사용하여 데이터를 조회하고 그 결과를 RealGrid로 표시하는 예제 입니다.
+    Fox Data Service를 호출하고 그 결과인 response.dataSet.Table.rows 배열을
+    LocalDataProvider의 setRows 메서드 호출에 매개변수로 사용하면 됩니다.</p>
+
+<button onclick="getData();">조회</button><br />
+
+<div id="realgrid" style="width: 100%; height: 360px;"></div>
+<div id="error_panel" class="alert alert-danger">
+    <h3>Error Information</h3>
+    <div class="well">
+        <p id="error_message">Message:</p>
+        <p>Detail:</p>
+        <pre id="error_detail"></pre>
+        <p>Stack Trace:</p>
+        <pre id="error_stacktrace"></pre>
+    </div>
+</div>
+
+<!--jquery-->
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<!--neodeex-->
+<script type="text/javascript" src="~/Scripts/FoxRestClient.js"></script>
+
+<!--realgrid-->
+<script type="text/javascript" src="~/realgrid/realgridjs-lic.js"></script>
+<script type="text/javascript" src="~/realgrid/realgridjs_eval.1.1.31.min.js"></script>
+<script type="text/javascript" src="~/realgrid/realgridjs-api.1.1.31.js"></script>
+<script type="text/javascript" src="~/realgrid/jszip.min.js"></script>
+
+<script>
+    var gridView;
+    var dataProvider;
+
+    // RealGrid의 LocalDataProvider와 GridView를 생성하고 초기화 한다.
+    $(document).ready(function () {
+        $("#error_panel").hide();
+
+        RealGridJS.setRootContext("@Url.Content("/realgrid")");
+
+        dataProvider = new RealGridJS.LocalDataProvider();
+        gridView = new RealGridJS.GridView("realgrid");
+        gridView.setDataSource(dataProvider);
+    });
+
+    // NeoDEEX가 반환한 데이터 테이블로부터 LocalDataProvider의 필드와
+    // GridView의 컬럼들을 초기화 한다.
+    // (사전에 GridView를 '디자인'하여 GridView의 컬럼과 LocalDataProvider의 필드를
+    //  설정한 경우 이 메서드는 불필요하다.)
+    function populateColumns(table) {
+        var columns = [];
+        var fields = [];
+        table.columns.forEach(function (tableColumn) {
+            var name = tableColumn.name;
+            // LocalDataProvider 필드 구성
+            var field = {};
+            field.fieldName = name;
+            fields.push(field);
+            // GridView 컬럼 구성
+            var column = {};
+            column.name = name;
+            column.fieldName = field.fieldName;
+            columns.push(column);
+        });
+        gridView.setColumns(columns);
+        dataProvider.setFields(fields);
+    }
+
+    // Fox Data Service를 호출하고 호출 결과를 RealGrid에 바인딩하여 결과를 표시한다.
+    function getData() {
+        var client = new FoxRestDataClient("@Url.Content("/api/dataservice")");
+        var request = new FoxDataRequest();
+        request.queryId = "Northwind.GetAllProducts";
+        client.executeDataSet(request, function (response) {
+            var table = response.dataSet.Table;
+            // 그리드 표시 및 오류 패널 감추기
+            $("#realgrid").show();
+            $("#error_panel").hide();
+            // 컬럼 생성
+            populateColumns(table);
+            // 데이터 바인딩
+            dataProvider.setRows(table.rows);
+        },
+        function (errorInfo) {
+            $("#realgrid").hide();
+            $("#error_message").text("Message: " + errorInfo.Message);
+            $("#error_detail").text(errorInfo.MessageDetail);
+            $("#error_stacktrace").text(errorInfo.StackTrace);
+            // 오류 패널 표시
+            $("#error_panel").show();
+        });
+    }
+</script>

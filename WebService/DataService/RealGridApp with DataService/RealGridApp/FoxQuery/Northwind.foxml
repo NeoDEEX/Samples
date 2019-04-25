@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queryMap provider="MSSQL" codeGeneration="0" xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+  <alias />
+  <statements>
+    <statement id="GetAllProducts">
+      <text>
+        SELECT * FROM Products
+      </text>
+    </statement>
+  </statements>
+</queryMap>
