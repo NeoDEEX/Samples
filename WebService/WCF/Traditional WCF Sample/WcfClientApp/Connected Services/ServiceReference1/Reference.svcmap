@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9313cb77-ecb7-44f1-bbe3-468702426a9e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3912/OldWcfService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OldWcfService.xsd" MetadataType="Schema" ID="05746f6c-e66b-4eac-ac50-3688367dd1e1" SourceId="1" SourceUrl="http://localhost:3912/OldWcfService.svc?xsd=xsd2" />
+    <MetadataFile FileName="OldWcfService1.xsd" MetadataType="Schema" ID="58490bb9-95ab-4bdd-a940-df19ce9d2553" SourceId="1" SourceUrl="http://localhost:3912/OldWcfService.svc?xsd=xsd0" />
+    <MetadataFile FileName="OldWcfService.disco" MetadataType="Disco" ID="ba823a00-ac17-403a-8d7e-6d756b1d79f0" SourceId="1" SourceUrl="http://localhost:3912/OldWcfService.svc?disco" />
+    <MetadataFile FileName="OldWcfService.wsdl" MetadataType="Wsdl" ID="51d68d48-2a66-4b72-b693-da25b28d3137" SourceId="1" SourceUrl="http://localhost:3912/OldWcfService.svc?wsdl" />
+    <MetadataFile FileName="OldWcfService2.xsd" MetadataType="Schema" ID="1454aed6-d6dd-4f4a-a1ee-bf1d5e21b1f2" SourceId="1" SourceUrl="http://localhost:3912/OldWcfService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
