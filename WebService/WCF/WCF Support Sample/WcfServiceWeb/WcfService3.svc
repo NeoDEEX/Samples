@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true"
+    Service="WcfServiceWeb.WcfService3;netHttp" CodeBehind="WcfService3.svc.cs"
+    Factory="TheOne.ServiceModel.Activation.FoxServiceHostFactory" %>
