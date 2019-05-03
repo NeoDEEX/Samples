@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true"
+    Service="WcfServiceWeb.WcfServiceWithCompress;customCompress" CodeBehind="WcfServiceWithCompress.svc.cs"
+    Factory="TheOne.ServiceModel.Activation.FoxServiceHostFactory" %>
