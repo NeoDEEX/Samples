@@ -21,3 +21,5 @@ Fox Web Service의 WCF 지원 기능들에 대한 상세한 정보는 다음 목
 * [How-to: WCF 서비스 구성](https://github.com/NeoDEEX/manual/tree/master/webservice/wcf/howto-service.md)
 
 * [How-to: WCF 클라이언트 구성](https://github.com/NeoDEEX/manual/tree/master/webservice/wcf/howto-service.md)
+
+---
