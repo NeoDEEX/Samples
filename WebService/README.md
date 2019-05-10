@@ -18,6 +18,10 @@ Fox Web Service 예제들은 다음과 같습니다.
 
     [How To : Fox Biz Service WCF 서비스 구성](https://github.com/neodeex/manual/tree/master/webservice/bizservice/howto-wcf.md) 문서에서 다루는 예제 코드 입니다.
 
+* [Fox Biz Service REST API 예제](BizService/Fox%20Biz%20Service%20REST%20Demo)
+
+    [How To : Fox Biz Service REST API 서비스 구성](https://github.com/neodeex/manual/tree/master/webservice/bizservice/howto-rest.md) 문서에서 다루는 예제 코드 입니다.
+
 * [RealGrid Example using Fox Data Service](DataService/RealGridApp%20with%20DataService)
 
     [Fox Data Service](https://github.com/neodeex/manual/tree/master/webservice/README.md)를 통해 데이터를 조회하고 그 결과를 [RealGrid](https://www.realgrid.com/)에 바인드하여 표시하는 예제 입니다.
