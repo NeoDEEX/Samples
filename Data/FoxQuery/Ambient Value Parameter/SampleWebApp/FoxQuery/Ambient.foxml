@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+  <statements>
+    <statement id="UpdateProduct">
+      <text>
+        UPDATE Product
+        SET ProductName = @ProductName, SupplierId = @SupplierId, UnitPrice = @UnitPrice,
+        Package = @Package, ModifiedBy = @ModifiedBy, ModifiedAt = sysdatetime()
+        WHERE Id = @Id
+      </text>
+      <parameters>
+        <parameter name="Id" dbType="int"/>
+        <parameter name="ProductName" dbType="nvarchar" size="50" />
+        <parameter name="SupplierId" dbType="int"/>
+        <parameter name="UnitPrice" dbType="decimal" size="12" precision="2" />
+        <parameter name="Package" dbType="nvarchar" size="30" />
+        <parameter name="ModifiedBy" property="UserInfo.UserId" dbType="nvarchar" size="32" ambient="true"/>
+      </parameters>
+    </statement>
+    <statement id="WriteServerLog">
+      <text>
+        INSERT INTO ServerLog(Host, IP, Process, Message) VALUES(@Host, @Ip, @ProcessName, @Message)
+      </text>
+      <parameters>
+        <parameter name="Host" property="Env.Host" ambient="true"/>
+        <parameter name="Ip" property="Env.Ip" ambient="true"/>
+        <parameter name="ProcessName" property="Env.Process" ambient="true"/>
+        <parameter name="Message" dbType="nvarchar"/>
+      </parameters>
+    </statement>
+  </statements>
+</queryMap> 

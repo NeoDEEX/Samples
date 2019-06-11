@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+  <statements>
+    <statement id="GetProducts">
+      <text>
+        SELECT Id, ProductName, SupplierId, UnitPrice, Package FROM Product
+      </text>
+    </statement>
+    <statement id="GetRawData">
+      <text>
+        SELECT * FROM Product
+      </text>
+    </statement>
+  </statements>
+</queryMap>
