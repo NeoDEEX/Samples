@@ -21,58 +21,6 @@
         <input type="button" value="CORS Biz Service 호출" onclick="sendRequest('http://localhost:7505/api/cors/bizservice', 'result2')" />
         <span id='result2' style="font-weight: bold"></span>
     <p />
-    <ul>
-        <li>CORS를 지원하기 위해서는 Fox Biz Service를 호스팅하는 웹 어플리케이션에 Microsoft.AspNet.WebApi.Cors 패키지를 NuGet에서 추가합니다.</li>
-        <li>WebApiConfig.cs 파일에서 config.EnableCors() 메서드 호출을 추가 합니다.
-<pre>
-    public static void Register(HttpConfiguration config)
-    {
-        // Web API configuration and services
-
-        <b style="background-color:yellow">// CORS 기능 활성화
-        config.EnableCors();</b>
-        // Web API routes
-        config.MapHttpAttributeRoutes();
-
-        ......
-    }
-</pre>
-        </li>
-        <li>FoxBizServiceController 클래스에서 파생된 Controller 클래스를 추가 합니다.</li>
-        <li>추가된 Controller 클래스에 EnableCorsAttribute 특성을 추가하고 적설한 설정을 수행합니다.
-<pre>
-    <b style="background-color:yellow">[EnableCors(origins: "http://localhost:7512,http://localhost.fiddler:7512", headers: "*", methods: "*")]</b>
-    public class CorsBizServiceController : TheOne.ServiceModel.Web.Http.Controllers.FoxBizServiceController
-    {
-    // 구현할 내용이 전혀 없습니다.
-    }
-</pre>
-        </li>
-        <li>추가된 Controller를 위한 라우팅 설정을 WebApiConfig.cs에 추가합니다.
-<pre>
-    public static void Register(HttpConfiguration config)
-    {
-        ......
-
-        // CORS를 지원하지 않는 Fox Biz Service 컨트롤러 라우팅
-        config.Routes.MapHttpRoute(
-            name: "FoxBizService",
-            routeTemplate: "api/bizservice/{action}",
-            defaults: new { controller = "FoxBizService" }
-        );
-
-        <b style="background-color:yellow">// CORS를 지원하는 Fox Biz Service 컨트롤러 라우팅
-        config.Routes.MapHttpRoute(
-            name: "CorsFoxBizService",
-            routeTemplate: "api/cors/bizservice/{action}",
-            defaults: new { controller = "CorsBizService" }
-        );</b>
-    }
-</pre>       
-        </li>
-        <li>참고 자료 : <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api" target="_blank">Enable cross-origin requests in ASP.NET Web API</a></li>
-        <li>Fox Data Service 역시 동일한 방법으로 CORS 적용이 가능합니다.</li>
-    </ul>
 </div>
 
 <script src="~/Scripts/FoxRestClient.js"></script>
