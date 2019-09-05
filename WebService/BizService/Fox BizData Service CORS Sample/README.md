@@ -1,6 +1,6 @@
-# Fox Biz/Data Service CORS Sample
+# Fox Biz/Data Service REST API CORS Sample
 
-[Fox Biz Service](https://github.com/NeoDEEX/manual/tree/master/webservice/bizservice)/[Fox Data Service](https://github.com/NeoDEEX/manual/tree/master/webservice/dataservice) 구현 시 발생할 수 있는 크로스 도메인(Cross-Domain) 혹은 크로스 오리진(Cross-Origin) 문제를 해결하는 CORS(Cross-Origin Resource Sharing)를 적용하는 예제 입니다.
+[Fox Biz Service](https://github.com/NeoDEEX/manual/tree/master/webservice/bizservice)/[Fox Data Service](https://github.com/NeoDEEX/manual/tree/master/webservice/dataservice) REST API 구현 시 발생할 수 있는 크로스 도메인(Cross-Domain) 혹은 크로스 오리진(Cross-Origin) 문제를 해결하는 CORS(Cross-Origin Resource Sharing)를 적용하는 예제 입니다.
 
 ![Fox Biz/Data Service CORS Sample](./images/cors_sample.png)
 
@@ -14,7 +14,7 @@
 
 ## ASP.NET WebAPI CORS
 
-Fox Biz/Data Service는 ASP.NET WebAPI를 기반으로 구현되었습니다. 따라서 ASP.NET Web API에 CORS를 적용하는 방법을 사용하여 Fox Biz/Data Service에 CORS를 적용할 수 있으며 응용도 가능합니다. 다음 문서는 ASP.NET Web API에 CORS를 적용하는 방법을 설명하는 문서 입니다.
+Fox Biz/Data Service REST API는 ASP.NET WebAPI를 기반으로 구현되었습니다. 따라서 ASP.NET Web API에 CORS를 적용하는 방법을 사용하여 Fox Biz/Data Service에 CORS를 적용할 수 있으며 응용도 가능합니다. 다음 문서는 ASP.NET Web API에 CORS를 적용하는 방법을 설명하는 문서 입니다.
 
 > [Enable cross-origin requests in ASP.NET Web API 2](https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api)
 
@@ -26,9 +26,9 @@ ServiceWeb 프로젝트는 Fox Biz Service를 제공하며 CORS가 적용된 예
 
 Fox Biz Service에 CORS에 적용하는 방법은 다음과 같습니다.
 
-* Fox Biz Service를 호스팅하는 웹 프로젝트에 `Microsoft.AspNet.WebApi.Cors` 패키지를 NuGet에서 추가합니다.
+1. Fox Biz Service를 호스팅하는 웹 프로젝트에 `Microsoft.AspNet.WebApi.Cors` 패키지를 NuGet에서 추가합니다.
 
-* [`WebApiConfig.cs`](./ServiceWeb/App_Start/WebApiConfig.cs) 파일에서 `config.EnableCors` 메서드 호출을 추가합니다.
+1. [`WebApiConfig.cs`](./ServiceWeb/App_Start/WebApiConfig.cs) 파일에서 `config.EnableCors` 메서드 호출을 추가합니다.
 
     ```cs
     public static void Register(HttpConfiguration config)
@@ -42,21 +42,23 @@ Fox Biz Service에 CORS에 적용하는 방법은 다음과 같습니다.
     }
     ```
 
-* `FoxBizServiceController` 클래스에서 파생된 컨트롤러 클래스([`CorsBizServiceController`](./ServiceWeb/Controllers/CorsBizServiceController.cs))를 추가 합니다.
+1. `FoxBizServiceController` 클래스에서 파생된 컨트롤러 클래스([`CorsBizServiceController`](./ServiceWeb/Controllers/CorsBizServiceController.cs))를 추가 합니다.
 
-* 추가된 컨트롤러 클래스에 `EnableCorsAttribute` 특성을 추가하고 적설한 설정을 수행합니다.
+    * 추가된 컨트롤러 클래스에 `EnableCorsAttribute` 특성을 추가하고 적설한 설정을 수행합니다.
 
     ```CS
-    [EnableCors(origins: "http://localhost:7512,http://localhost.fiddler:7512", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:7512", headers: "*", methods: "*")]
     public class CorsBizServiceController : FoxBizServiceController
     {
     // 구현할 내용이 전혀 없습니다.
     }
     ```
 
-    > 주: 추가된 컨트롤러에 어떤 코드도 추가할 필요가 없습니다.
+    * 추가된 컨트롤러에 어떤 코드도 추가할 필요가 없습니다. 비즈 서비스 REST API에 대한 구현은 `FoxBizServiceController`가 제공하기 때문입니다.
 
-* 추가된 컨트롤러를 위한 라우팅 설정을 [`WebApiConfig.cs`](./ServiceWeb/App_Start/WebApiConfig.cs)에 추가합니다.
+    * `origins` 속성에 호출을 허용하고자 하는 대상을 명확히 명시해 주는 것이 좋습니다. `*`를 사용하여 임의의 호출을 모두 허용하게 하는 것은 보안 취약점이 될 수도 있습니다.
+
+1. 추가된 컨트롤러를 위한 라우팅 설정을 [`WebApiConfig.cs`](./ServiceWeb/App_Start/WebApiConfig.cs)에 추가합니다.
 
     ```cs
     public static void Register(HttpConfiguration config)
@@ -79,6 +81,16 @@ Fox Biz Service에 CORS에 적용하는 방법은 다음과 같습니다.
     }
     ```
 
-* Fox Data Service 역시 동일한 방법으로 CORS 적용이 가능합니다.
+    * CORS가 필요없는 클라이언트는 기존 URL을 사용하여 호출하도록 합니다.
+
+    * CORS가 필요한 클라이언트는 새로이 추가된 URL을 사용하여 호출하도록 합니다.
+
+1. Fox Biz Service를 호출해야하는 다른 웹 사이트가 추가되는 경우;
+
+    * 앞서 설명한 것과 같이 새로운 컨트롤러 클래스를 추가하고 라우팅 설정을 추가하거나,
+
+    * 기존 `EnableCorsAttribute` 특성에 `origins` 속성에 사이트를 컴마로 구분하여 추가합니다.
+
+> Fox Data Service REST API 역시 동일한 방법으로 CORS 적용이 가능합니다.
 
 ---
