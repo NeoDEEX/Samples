@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CORS 지원 Fox BIZ Service</title>
+    <script src="Scripts/FoxRestClient.js"></script>
+</head>
+<body>
+    <h1><img src="/images/neodeex.png" style="align-content:center" />&nbsp;CORS 지원 Fox Biz Service 예제</h1>
+    <p>이 페이지에서 Fox Biz Service 호출은 Cross-Domain 스크립트 문제를 유발하지 않기 때문에 항상 성공합니다.</p>
+    <input type="button" value="Invoke Fox Biz Service" onclick="sendRequest()" />
+    <span id='result' style="font-weight: bold"></span>
+    <p>이 웹 어플리케이션은 2 종류의 Fox Biz Service를 제공합니다.</p>
+    <ul>
+        <li>일반 Fox Biz Service
+            <ul>
+                <li>Uri: <a href="/api/bizservice/about">~/api/bizservice</a></li>
+                <li>Cross-Domain javascript 상황을 지원하지 않음</li>
+                <li>FoxBizServiceController 클래스를 직접 사용하는 기본 Biz Serivce</li>
+            </ul>
+        </li>
+        <li><span style="color:red">CORS(Cross-Origin Resource Sharing)를 지원하는 Biz Service</span>
+            <ul>
+                <li>Uri: <a href="/api/cors/bizservice/about">~/api/cors/bizservice</a></li>
+                <li>Microsoft.AspNet.WebApi.Cors 패키지를 사용하여 CORS를 지원하는 Biz Service</li>
+                <li>FoxBizServiceController 클래스에서 파생된 컨트롤러 클래스 필요</li>
+                <li>참고 자료 : <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api" target="_blank">Enable cross-origin requests in ASP.NET Web API</a></li>
+            </ul>
+        </li>
+        <li>Fox Data Service 에도 동일하게 CORS 적용 가능합니다.</li>
+    </ul>
+</body>
+</html>
+<script>
+    // BIZ 서비스 호출
+    // BIZ 서비스와 동일 사이트의 웹 페이지이므로 서비스 호출이 성공한다.
+    function sendRequest() {
+        var serviceUrl = "api/bizservice"
+        var client = new FoxRestBizClient(serviceUrl);
+        var request = new FoxBizRequest();
+        request.classId = "ServiceWeb.Biz.BizClass";
+        request.methodId = "Echo"
+        request.parameters.str = "test message";
+        client.execute(request,
+            function (response) {
+                var element = document.getElementById("result");
+                element.innerText = response.result.value;
+            },
+            function (errorInfo) {
+                var element = document.getElementById("result");
+                element.innerText = errorInfo.Message;
+            });
+    }
+</script>
