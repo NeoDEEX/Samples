@@ -14,4 +14,8 @@ NeoDEEX의 [Fox Biz Service](https://github.com/NeoDEEX/manual/blob/master/webse
 
     1개 이상의 `IDictionary<string, object>` 타입의 매개변수를 취하는 Biz Service 메서드 관련 예제 입니다.
 
+* [Fox Biz/Data Service REST API CORS 적용 예제](./Fox%20BizData%20Service%20CORS%20Sample)
+
+    Fox Biz/Data Service REST API에 크로스 도메인 문제를 해결하기 위해 CORS를 적용하는 예제 입니다.
+
 ---
