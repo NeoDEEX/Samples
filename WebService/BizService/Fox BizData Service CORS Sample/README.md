@@ -48,7 +48,7 @@ Fox Biz Service에 CORS에 적용하는 방법은 다음과 같습니다.
 
     ```CS
     [EnableCors(origins: "http://localhost:7512,http://localhost.fiddler:7512", headers: "*", methods: "*")]
-    public class CorsBizServiceController : TheOne.ServiceModel.Web.Http.Controllers.FoxBizServiceController
+    public class CorsBizServiceController : FoxBizServiceController
     {
     // 구현할 내용이 전혀 없습니다.
     }
