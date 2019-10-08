@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queryMap provider="MSSQL" codeGeneration="0" xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+  <alias />
+  <statements>
+    <statement id="InsertActivityInfo">
+      <text>
+        INSERT INTO PerformanceActivity(ActivityId, ActivityName, LogTimestamp, ElapsedTime, Category, MachineName, ProcessId)
+        VALUES(#ActivityId#, #ActivityName#, #LogTimestamp#, #ElapsedTime#, #Category#, #MachineName#, #ProcessId#)
+      </text>
+      <parameters>
+        <parameter name="ActivityId" dbType="VarChar" size="50" />
+        <parameter name="ActivityName" dbType="NVarChar" size="128" />
+        <parameter name="LogTimestamp" dbType="DateTime" />
+        <parameter name="ElapsedTime" dbType="Decimal"/>
+        <parameter name="Category" dbType="NVarChar" size="32" />
+        <parameter name="MachineName" dbType="NVarChar" size="50" />
+        <parameter name="ProcessId" dbType="Int" />
+      </parameters>
+    </statement>
+    <statement id="InsertContextInfo">
+      <text>
+        INSERT INTO PerformanceContext(ActivityId, ContextId, ContextName, LogTimestamp, InclusiveTime, ExclusiveTime, ParentContextId)
+        VALUES(#ActivityId#, #ContextId#, #ContextName#, #LogTimestamp#, #InclusiveTime#, #ExclusiveTime#, #ParentContextId#)
+      </text>
+      <parameters>
+        <parameter name="ActivityId" dbType="VarChar" size="50" />
+        <parameter name="ContextId" dbType="Int" />
+        <parameter name="ContextName" dbType="NVarChar" size="128" />
+        <parameter name="LogTimestamp" dbType="DateTime" />
+        <parameter name="InclusiveTime" dbType="Decimal"/>
+        <parameter name="ExclusiveTime" dbType="Decimal"/>
+        <parameter name="ParentContextId" dbType="Int" />
+      </parameters>
+    </statement>
+    <statement id="GetPerformanceInfo">
+      <text>
+        <![CDATA[
+        SELECT a.*, b.ContextId, b.ContextName
+        FROM PerformanceActivity a LEFT JOIN PerformanceContext b ON a.ActivityId = b.ActivityId AND b.ParentContextId = -1
+        WHERE ((#DateFrom# IS NULL) OR (a.LogTimestamp >= #DateFrom#))
+        AND ((#DateTo# IS NULL) OR (a.LogTimestamp <= #DateTo#))
+        ORDER BY LogTimestamp DESC;
+
+        SELECT b.*
+        FROM PerformanceActivity a LEFT JOIN PerformanceContext b ON a.ActivityId = b.ActivityId
+        WHERE ((#DateFrom# IS NULL) OR (a.LogTimestamp >= #DateFrom#))
+        AND ((#DateTo# IS NULL) OR (a.LogTimestamp <= #DateTo#))
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="DateFrom" dbType="DateTime"/>
+        <parameter name="DateTo" dbType="DateTime"/>
+      </parameters>
+    </statement>
+    <statement id="DeletePerformanceInfo">
+      <text>
+        DELETE PerformanceActivity;
+        
+        DELETE PerformanceContext;
+      </text>
+    </statement>
+    <statement id="GetContextInfo">
+      <text>
+        <![CDATA[
+        SELECT a.LogTimestamp,
+               Concat(a.ActivityId, ':', a.ContextId) as Id,
+               a.ActivityId, b.ActivityName,
+               a.ContextId, a.ContextName, 
+               InclusiveTime, ExclusiveTime, ParentContextId,
+               Concat(a.ActivityId, ':', a.ParentContextId) as ParentId
+        FROM PerformanceContext a LEFT JOIN PerformanceActivity b ON a.ActivityId = b.ActivityId
+        WHERE ((#DateFrom# IS NULL) OR (a.LogTimestamp >= #DateFrom#))
+        AND ((#DateTo# IS NULL) OR (a.LogTimestamp <= #DateTo#))
+		    ORDER BY b.LogTimestamp ASC
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="DateFrom" dbType="DateTime"/>
+        <parameter name="DateTo" dbType="DateTime"/>
+      </parameters>
+    </statement>
+  </statements>
+</queryMap>

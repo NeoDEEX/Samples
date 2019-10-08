@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queryMap provider="MSSQL" codeGeneration="0" xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+  <alias />
+  <statements>
+    <statement id="GetDbProfileEntity">
+      <text>
+        SELECT * FROM DbProfile WHERE LogId = #LogId#
+      </text>
+      <parameters>
+        <parameter name="LogId"/>
+      </parameters>
+    </statement>
+    <statement id="GetDbProfile">
+      <text>
+        <![CDATA[
+        SELECT * FROM DbProfile a
+        WHERE ((#DateFrom# IS NULL) OR (a.LogTimestamp >= #DateFrom#))
+        AND ((#DateTo# IS NULL) OR (a.LogTimestamp <= #DateTo#))
+        ORDER BY LogTimestamp DESC
+        ]]>
+      </text>
+    </statement>
+    <statement id="InsertDbProfile">
+      <text>
+        INSERT INTO DbProfile (LogId, LogTimestamp, UserId, FoxQueryId, ExecutionType, ExecutionTime, QueryParameters, QueryText, ResultString, InlineQuery, CallerName, ExceptionType, ErrorCode, ErrorMessage)
+        VALUES (#LogId#, #LogTimestamp#, #UserId#, #FoxQueryId#, #ExecutionType#, #ExecutionTime#, #QueryParameters#, #QueryText#, #ResultString#, #InlineQuery#, #CallerName#, #ExceptionType#, #ErrorCode#, #ErrorMessage#)
+      </text>
+      <parameters>
+        <parameter name="LogId" property="LogId" dbType="VarChar" size="42" />
+        <parameter name="LogTimestamp" property="LogTimestamp" dbType="DateTime" />
+        <parameter name="UserId" property="UserId" dbType="VarChar" size="16" />
+        <parameter name="FoxQueryId" property="FoxQueryId" dbType="VarChar" size="256" />
+        <parameter name="ExecutionType" property="ExecutionType" dbType="VarChar" size="32" />
+        <parameter name="ExecutionTime" property="ExecutionTime" />
+        <parameter name="QueryParameters" property="QueryParameters" dbType="NVarChar" size="2000" />
+        <parameter name="QueryText" property="QueryText" dbType="NVarChar" size="4000" />
+        <parameter name="ResultString" property="ResultString" dbType="NVarChar" size="256" />
+        <parameter name="InlineQuery" property="InlineQuery" dbType="NVarChar" size="4000" />
+        <parameter name="CallerName" property="CallerName" dbType="NVarChar" size="256" />
+        <parameter name="ExceptionType" property="ExceptionType" dbType="NVarChar" size="256" />
+        <parameter name="ErrorCode" property="ErrorCode" dbType="Int" size="4" />
+        <parameter name="ErrorMessage" property="ErrorMessage" dbType="NVarChar" size="2000" />
+      </parameters>
+    </statement>
+    <statement id="DeleteDbProfile">
+      <text>
+        DELETE DbProfile
+      </text>
+    </statement>
+    </statements>
+</queryMap>

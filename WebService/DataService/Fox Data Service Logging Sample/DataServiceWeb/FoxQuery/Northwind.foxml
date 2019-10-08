@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<queryMap provider="MSSQL" codeGeneration="0" xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+  <alias />
+  <statements>
+    <statement id="GetCategories">
+      <text>
+        SELECT CategoryID, CategoryName, Description FROM Categories
+      </text>
+    </statement>
+    <statement id="GetSuppliers">
+      <text>
+        SELECT SupplierID, CompanyName, Phone FROM Suppliers
+      </text>
+    </statement>
+    <statement id="GetProducts">
+      <text>
+        SELECT *  FROM Products
+        WHERE ( (#CategoryID# IS NULL) OR (CategoryID = #CategoryID#) )
+        AND ( (#SupplierID# IS NULL) OR (SupplierID = #SupplierID#) )
+      </text>
+      <parameters>
+        <parameter name="CategoryID" dbType="int"/>
+        <parameter name="SupplierID" dbType="int"/>
+      </parameters>
+    </statement>
+    <!-- DB Profile에 기록되는 오류 정보 확인용 쿼리로서 존재하지 않는 테이블을 SELECT 함. -->
+    <statement id="ErrorQuery">
+      <text>
+        SELECT * FROM NonExistTable
+      </text>
+    </statement>
+  </statements>
+</queryMap>
