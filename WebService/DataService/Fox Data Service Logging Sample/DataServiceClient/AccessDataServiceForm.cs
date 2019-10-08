@@ -30,7 +30,7 @@ namespace DataServiceClient
             {
                 using (var client = FoxClientFactory.CreateDataClient(DataServiceUri))
                 {
-                    var requests = new FoxDataRequest[]
+                    var requests = new FoxDataRequestCollection
                     {
                         FoxDataRequest.Create("Northwind.GetSuppliers"),
                         FoxDataRequest.Create("Northwind.GetCategories"),
@@ -38,6 +38,7 @@ namespace DataServiceClient
                     requests[0].Operation = FoxDataOperations.ExecuteDataSet;
                     requests[1].Operation = FoxDataOperations.ExecuteDataSet;
 
+                    //var responses = await client.ExecuteMultipleAsync(requests);
                     var tasks = client.ExecuteParallelAsync(requests);
                     var responses = await Task.WhenAll(tasks);
                     lookupSuppliers.Properties.DataSource = responses[0].DataSet.Tables[0];
