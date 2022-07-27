@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMacro", "SimpleMacro\SimpleMacro.csproj", "{46A131EB-65C9-4797-8659-06E0C2867C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataServiceWebApp", "DataServiceWebApp\DataServiceWebApp.csproj", "{9A9EBA0C-2365-47AC-857D-27F451E8AB13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46A131EB-65C9-4797-8659-06E0C2867C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A131EB-65C9-4797-8659-06E0C2867C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A131EB-65C9-4797-8659-06E0C2867C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A131EB-65C9-4797-8659-06E0C2867C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9EBA0C-2365-47AC-857D-27F451E8AB13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9EBA0C-2365-47AC-857D-27F451E8AB13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9EBA0C-2365-47AC-857D-27F451E8AB13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9EBA0C-2365-47AC-857D-27F451E8AB13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D17F036D-0973-4F40-8AAC-08456C44031B}
+	EndGlobalSection
+EndGlobal
