@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+	<statements>
+		<statement id="GetAll">
+			<text>
+				SELECT ProductID, ProductName, CategoryID FROM Products
+			</text>
+		</statement>
+		<statement id="GetByCategory">
+			<text>
+				SELECT ProductID, ProductName, CategoryID FROM Products WHERE CategoryID = #CategoryId#
+			</text>
+			<parameters>
+				<parameter name="CategoryId"/>
+			</parameters>
+		</statement>
+	</statements>
+</queryMap>

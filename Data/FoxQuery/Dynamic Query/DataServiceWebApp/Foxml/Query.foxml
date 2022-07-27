@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.theonetech.co.kr/fx/mapping/2011/04/">
+	<statements>
+		<statement id="GetData">
+			<text>
+				SELECT ProductID, ProductName, CategoryID FROM Products
+				$$WHERE()$$
+			</text>
+			<macros>
+				<macro name="WHERE">
+				<![CDATA[
+				  var categoryId = env.Args.CategoryId;
+					env.WriteLog($"categoryId = {categoryId}");
+					if (DBNull.Value.Equals(categoryId)) {
+						return null;
+					}
+					else {
+						env.Params.Add("CategoryId", "Int");
+						return "WHERE CategoryId = #CategoryId#";
+					}
+				]]>
+				</macro>
+			</macros>
+		</statement>
+	</statements>
+</queryMap>
