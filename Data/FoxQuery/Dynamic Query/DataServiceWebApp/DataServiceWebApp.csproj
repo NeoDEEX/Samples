@@ -80,6 +80,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\NeoDEEX\DEV\4.5\Build\Framework Core\Debug\TheOne.ServiceModel.Activation.4.5.dll</HintPath>
     </Reference>
+    <Reference Include="Z.Expressions.Eval, Version=4.0.72.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.Expressions.Eval.4.0.72\lib\net45\Z.Expressions.Eval.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
