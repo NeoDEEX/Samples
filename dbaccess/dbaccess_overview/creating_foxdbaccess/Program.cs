@@ -17,7 +17,7 @@ internal class Program
         CreatingSpecificDbAccess();
     }
 
-    static readonly string npgsqlConnectionString = "Server=test-prostgresql.postgres.database.azure.com;Database=testdb;Port=5432;User Id=tester;Password=test;Ssl Mode=Require;";
+    static readonly string npgsqlConnectionString = "... your_connection_string ...";
 
     static void CreateConcreteClass()
     {

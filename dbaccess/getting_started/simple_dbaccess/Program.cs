@@ -9,7 +9,7 @@ namespace simple_dbaccess;
 
 internal class Program
 {
-    const string DB_ConnectionString = "Server=test-prostgresql.postgres.database.azure.com;Database=testdb;Port=5432;User Id=tester;Password=test;Ssl Mode=Require;";
+    const string DB_ConnectionString = "... your_connection_string ...";
 
     static void Main(string[] args)
     {

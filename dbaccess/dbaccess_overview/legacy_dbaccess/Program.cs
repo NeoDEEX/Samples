@@ -4,7 +4,7 @@ namespace legacy_dbaccess;
 
 internal class Program
 {
-    static readonly string ConnectionString = "Server=test-prostgresql.postgres.database.azure.com;Database=testdb;Port=5432;User Id=tester;Password=test;Ssl Mode=Require;";
+    static readonly string ConnectionString = "... your_connection_string ...";
 
     static void Main(string[] args)
     {

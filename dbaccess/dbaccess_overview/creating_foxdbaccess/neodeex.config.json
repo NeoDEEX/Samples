@@ -4,11 +4,11 @@
     "connectionStrings": {
       "PostgreSQL": {
         "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
-        "connectionString": "Server=test-prostgresql.postgres.database.azure.com;Database=testdb;Port=5432;User Id=tester;Password=test;Ssl Mode=Require;"
+        "connectionString": "... your_connection_string ..."
       },
       "Oracle": {
         "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
-        "connectionString": "Data Source=(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g61e61b7c63ab4b_northwind_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)));User Id=northwind;Password=P@ssw0rd0092;"
+        "connectionString": "... your_connection_string ..."
       }
     }
   }
