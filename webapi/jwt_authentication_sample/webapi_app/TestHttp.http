@@ -1,0 +1,17 @@
+@webapi_app_HostAddress = http://localhost:5079
+
+POST {{webapi_app_HostAddress}}/api/bizservice/execute
+Accept: application/json
+Content-Type: application/json
+
+{
+  "classId": "webapi_app.Biz.TestBizLogic",
+  "methodId": "GetHello"
+}
+
+###
+
+GET {{webapi_app_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
