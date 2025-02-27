@@ -230,7 +230,7 @@ eyJhbGciOiJIUzI1NiIsInR5cC ... 생략 ...
 {
   "sub": "tester",
   "unique_name": "tester",
-  "fox_auth_string": "ENCYPTED__xMCZ+WFxU+TJYaaR1P4OHK2ALYYnHqkLKhfDalRc7TQ=",
+  "fox_auth_string": "ENCYPTED__xMCZ+WFxU+T ... 생략 ...",
   "exp": 1740675959,
   "iss": "https://jwt.neodeex.net",
   "aud": "https://demo.webapi.neodeex.net"
@@ -272,7 +272,7 @@ Fox Biz/Data Service Web API 에서 사용하는 인증/권한 확인의 핵심�
 
 따라서 `FoxUserInfoContext` 객체를 생성하고 `SetAuthenticated` 메서드를 호출할 수 있다면 JWT 인증이나 Goggle 인증 등 다양한 인증과 연동이 가능합니다.
 
-* 이 예제처럼 JWT 토큰에 NeoDEEX 토큰을 포함시켜 토큰을 발행하고 인증시 JWT 토큰에서 NeoDEEX 토큰을 추출하여 FoxUserInfoContext 객체를 복원할 수 있습니다. 
+* 이 예제처럼 JWT 토큰에 NeoDEEX 토큰을 포함시켜 토큰을 발행하고 인증시 JWT 토큰에서 NeoDEEX 토큰을 추출하여 `FoxUserInfoContext` 객체를 복원할 수 있습니다. 
 
 * 다른 인증 방법에서 사용자 Id 정도만을 알아낼 수 있다면 인증 후 캐시, DB 액세스 등의 방법을 통해 `FoxUserInfoContext` 객체를 "생성"하여 `SetAuthenticated` 메서드를 호출할 수도 있습니다.
 
