@@ -1,4 +1,5 @@
-﻿using NeoDEEX.ServiceModel.Services.Biz;
+﻿using NeoDEEX.Security;
+using NeoDEEX.ServiceModel.Services.Biz;
 
 namespace webapi_app.Biz;
 
@@ -8,6 +9,7 @@ public class TestBizLogic
     [FoxBizMethod]
     public string GetHello()
     {
-        return "Hello, NeoDEEX FoxBizService World!";
+        FoxUserInfoContext? ctx = FoxUserInfoContext.Current;
+        return $"Hello, NeoDEEX FoxBizService World! from {FoxUserInfoContext.Current?.UserId}   {ctx}";
     }
 }

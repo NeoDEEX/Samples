@@ -1,7 +1,20 @@
 @webapi_app_HostAddress = http://localhost:5079
+@jwt_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0ZXIiLCJ1bmlxdWVfbmFtZSI6InRlc3RlciIsImZveF9hdXRoX3N0cmluZyI6IkVOQ1lQVEVEX194TUNaK1dGeFUrVEpZYWFSMVA0T0hLMkFMWVluSHFrTEtoZkRhbFJjN1RRPSIsImV4cCI6MTc0MDY3MTk3MiwiaXNzIjoiaHR0cHM6Ly9qd3QubmVvZGVleC5uZXQiLCJhdWQiOiJodHRwczovL2RlbW8ud2ViYXBpLm5lb2RlZXgubmV0In0.m8N-BpB8HRr40CB5sVt5hscayny58gD_GEf-R4AjflE
+
+POST {{webapi_app_HostAddress}}/api/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": "tester",
+  "password": "test"
+}
+
+###
 
 POST {{webapi_app_HostAddress}}/api/bizservice/execute
 Accept: application/json
+Authorization: Bearer {{jwt_token}}
 Content-Type: application/json
 
 {
@@ -13,5 +26,6 @@ Content-Type: application/json
 
 GET {{webapi_app_HostAddress}}/weatherforecast/
 Accept: application/json
+Authorization: Bearer {{jwt_token}}
 
 ###

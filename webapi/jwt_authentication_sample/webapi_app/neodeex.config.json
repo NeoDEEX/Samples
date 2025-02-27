@@ -1,0 +1,7 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "webapiServer": {
+    "useAuthorization": true,
+    "returnServerInfo": false
+  }
+}
