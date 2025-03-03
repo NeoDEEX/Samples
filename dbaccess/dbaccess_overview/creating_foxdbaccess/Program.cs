@@ -10,11 +10,12 @@ namespace creating_foxdbaccess;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         //CreateConcreteClass();
         //UsingFactoryPattern();
-        CreatingSpecificDbAccess();
+        //CreatingSpecificDbAccess();
+        AccessingConcreteDbAccess();
     }
 
     static readonly string npgsqlConnectionString = "... your_connection_string ...";
@@ -61,6 +62,37 @@ internal class Program
         parameters.AddWithValue("product_name", DbType.String, "A%");
         string query = "SELECT * FROM products WHERE product_id <= :product_id AND product_name LIKE :product_name";
         DataSet ds = dbAccess.ExecuteSqlDataSet(query, parameters);
+        foreach (DataRow row in ds.Tables[0].Rows)
+        {
+            Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");
+        }
+    }
+
+    // PostgreSQL 테스트용 함수 생성 스크립트
+    //
+    // CREATE OR REPLACE FUNCTION get_products_with_param(p_id integer, p_name varchar)
+    //     RETURNS refcursor AS $$
+    // DECLARE
+    //     refcur  REFCURSOR;
+    // BEGIN
+    //     Open refcur for
+    // 		SELECT product_id, product_name       
+    //         FROM products WHERE product_id <= p_id AND product_name like p_name;
+    // 	return refcur;
+    // END; 
+    // $$ LANGUAGE plpgsql;
+    //
+    static void AccessingConcreteDbAccess()
+    {
+        // Npgsql 7.0 부터 CommandType.StoredProcedure 가 저장 프로시저 호출로 설정된다.
+        // 이전 버전 처럼 함수 호출로 바꾸어준다.
+        AppContext.SetSwitch("Npgsql.EnableStoredProcedureCompatMode", true);
+        FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
+        FoxDbParameterCollection parameters = dbAccess.CreateParamCollection();
+        parameters.AddWithValue("p_id", DbType.Int32, 20);
+        parameters.AddWithValue("p_name", DbType.String, "A%");
+        string functionName = "get_products_with_param";
+        DataSet ds = ((FoxNpgsqlDbAccess)dbAccess).ExecuteSpDataSet3(functionName, (FoxNpgsqlParameterCollection)parameters);
         foreach (DataRow row in ds.Tables[0].Rows)
         {
             Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");

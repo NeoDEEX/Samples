@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
   "database": {
+    "defaultConnectionString": "PostgreSQL",
     "connectionStrings": {
       "PostgreSQL": {
         "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
