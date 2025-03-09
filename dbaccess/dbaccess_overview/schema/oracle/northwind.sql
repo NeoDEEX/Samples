@@ -1,3 +1,6 @@
+--
+-- 데모용 Northwind 스키마 (Oracle)
+--
 CREATE TABLE products (
     product_id NUMBER(5) NOT NULL,
     product_name VARCHAR2(40) NOT NULL,

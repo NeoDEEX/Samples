@@ -1,3 +1,6 @@
+--
+-- 데모용 Northwind 스키마 (PostgreSQL)
+--
 CREATE TABLE products (
     product_id smallint NOT NULL,
     product_name character varying(40) NOT NULL,

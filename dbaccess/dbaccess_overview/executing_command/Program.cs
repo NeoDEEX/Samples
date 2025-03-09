@@ -1,5 +1,6 @@
 ﻿using NeoDEEX.Data;
 using NeoDEEX.Data.NpgsqlClient;
+using NeoDEEX.Data.Query;
 using Npgsql;
 using System.Data;
 
@@ -13,6 +14,7 @@ internal class Program
     {
         //string dbName = "PostgreSQL";
         //DeleteTestData(dbName);
+        ExecutingSqlDataSet();
         //CreateCommandAndExecute();
         //ExecutingExternalCommand();
         //CreatingFoxQueryCommandAndExecute();
@@ -23,8 +25,9 @@ internal class Program
         //ExecutingSpReader();
         //ExecutingReaderWithCustomCommandBehavior();
         //ExecutingTwoQueriesIntoDataSet();
-        CollectResultsIntoDataSet();
+        //CollectResultsIntoDataSet();
         //ExecutingFoxQueryWithParameter();
+        //CreatingFoxQueryCommandAndExecute();
         //DefaultTableNames();
         //DataTableNameMapping();
     }
@@ -35,6 +38,17 @@ internal class Program
         string query = "DELETE FROM my_demo_table WHERE col_id > 3";
         int affectedRows = dbAccess.ExecuteSqlNonQuery(query);
         Console.WriteLine($"{affectedRows} rows deleted.");
+    }
+
+    static void ExecutingSqlDataSet()
+    {
+        using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
+        string query = "SELECT * FROM products WHERE product_id < 3";
+        DataSet ds = dbAccess.ExecuteSqlDataSet(query);
+        foreach (DataRow row in ds.Tables[0].Rows)
+        {
+            Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");
+        }
     }
 
     static void CreateCommandAndExecute()
@@ -78,17 +92,6 @@ internal class Program
         }
     }
 
-    static void CreatingFoxQueryCommandAndExecute()
-    {
-        using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
-        using IDbCommand command = dbAccess.CreateCommand("postgre.select_products", new { product_id = 20, product_name = "A%" });
-        DataSet ds = dbAccess.ExecuteCommandDataSet(command);
-        foreach (DataRow row in ds.Tables[0].Rows)
-        {
-            Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");
-        }
-    }
-
     static void ExecutingFoxQuery()
     {
         using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
@@ -96,16 +99,6 @@ internal class Program
         foreach (DataRow row in ds.Tables[0].Rows)
         {
             Console.WriteLine($"Category ID: {row["category_id"]}, Category Name: {row["category_name"]}");
-        }
-    }
-
-    static void ExecutingFoxQueryWithParameter()
-    {
-        using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
-        DataSet ds = dbAccess.ExecuteQueryDataSet("postgre.select_products", new { product_id = 20, product_name = "A%" });
-        foreach (DataRow row in ds.Tables[0].Rows)
-        {
-            Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");
         }
     }
 
@@ -148,6 +141,26 @@ internal class Program
         while (reader.Read())
         {
             Console.WriteLine($"Category ID: {reader["category_id"]}, Category Name: {reader["category_name"]}");
+        }
+    }
+
+    static void ExecutingReaderWithCustomCommandBehavior()
+    {
+        using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
+        string query = "SELECT * FROM products WHERE product_id > 5";
+        IDbCommand command = dbAccess.CreateCommand(query, CommandType.Text);
+        dbAccess.Open();
+        try
+        {
+            using IDataReader reader = command.ExecuteReader(CommandBehavior.SingleRow);
+            while (reader.Read())
+            {
+                Console.WriteLine($"Product ID: {reader["product_id"]}, Product Name: {reader["product_name"]}");
+            }
+        }
+        finally
+        {
+            dbAccess.Close();
         }
     }
 
@@ -196,25 +209,43 @@ internal class Program
         }
     }
 
-    static void ExecutingReaderWithCustomCommandBehavior()
+    static void ExecutingFoxQueryWithParameter()
     {
         using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
-        string query = "SELECT * FROM products WHERE product_id > 5";
-        IDbCommand command = dbAccess.CreateCommand(query, CommandType.Text);
-        dbAccess.Open();
-        try
+        Dictionary<string, object?> parameters = new()
         {
-            using IDataReader reader = command.ExecuteReader(CommandBehavior.SingleRow);
-            while (reader.Read())
-            {
-                Console.WriteLine($"Product ID: {reader["product_id"]}, Product Name: {reader["product_name"]}");
-            }
-        }
-        finally
+            { "product_id", 20 },
+            { "product_name", "A%" }
+        };
+        //var parameters = new { product_id = 20, product_name = "A%" };
+        DataSet ds = dbAccess.ExecuteQueryDataSet("postgre.select_products", parameters);
+        foreach (DataRow row in ds.Tables[0].Rows)
         {
-            dbAccess.Close();
+            Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");
         }
     }
+
+    static void CreatingFoxQueryCommandAndExecute()
+    {
+        using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
+        Dictionary<string, object?> parameters = new()
+        {
+            { "product_id", 20 },
+            { "product_name", "A%" }
+        };
+        FoxQuery foxquery = dbAccess.GetQuery("postgre.select_products");
+        using IDbCommand command = dbAccess.CreateCommand(foxquery, parameters);
+        foreach(IDataParameter p in command.Parameters)
+        {
+            Console.WriteLine($"Parameters[\"{p.ParameterName}\"].Value = {p.Value}");
+        }
+        DataSet ds = dbAccess.ExecuteCommandDataSet(command);
+        foreach (DataRow row in ds.Tables[0].Rows)
+        {
+            Console.WriteLine($"Product ID: {row["product_id"]}, Product Name: {row["product_name"]}");
+        }
+    }
+
 
     static void DefaultTableNames()
     {

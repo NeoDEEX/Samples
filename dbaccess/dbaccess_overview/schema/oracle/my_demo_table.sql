@@ -1,3 +1,6 @@
+--
+-- 테스트용 my_demo_table (Oracle)
+--
 CREATE TABLE my_demo_table (
     col_id      NUMBER NOT NULL PRIMARY KEY,
     col_str     VARCHAR2(40),

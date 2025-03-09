@@ -9,7 +9,7 @@
     <statement id="select_products">
       <text>
         <![CDATA[
-          SELECT * FROM products WHERE product_id <= :product_id AND product_name LIKE :product_name
+          SELECT * FROM products WHERE product_id <= #product_id# AND product_name LIKE #product_name#
         ]]>
       </text>
       <parameters>
