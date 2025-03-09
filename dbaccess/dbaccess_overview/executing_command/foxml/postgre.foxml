@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="select_categories">
+      <text>
+        SELECT * FROM categories
+      </text>
+    </statement>
+    <statement id="select_products">
+      <text>
+        <![CDATA[
+          SELECT * FROM products WHERE product_id <= #product_id# AND product_name LIKE #product_name#
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="product_id" dbType="Integer" />
+        <parameter name="product_name" dbType="String" />
+      </parameters>
+    </statement>    
+  </statements>
+</queryMap>
