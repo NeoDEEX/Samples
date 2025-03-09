@@ -10,6 +10,8 @@ namespace creating_foxdbaccess;
 
 internal class Program
 {
+#pragma warning disable IDE0051 // Remove unused private members
+
     static void Main()
     {
         //CreateConcreteClass();

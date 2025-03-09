@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legacy_dbaccess", "legacy_dbaccess\legacy_dbaccess.csproj", "{EC51E177-65AF-4EA1-A83D-9F34079A9B20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "creating_foxdbaccess", "creating_foxdbaccess\creating_foxdbaccess.csproj", "{B94638C5-D756-48A8-B810-1DCE9208305F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "executing_command", "executing_command\executing_command.csproj", "{755D801F-1FD9-4863-95B4-C5D9B5DE7840}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B94638C5-D756-48A8-B810-1DCE9208305F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B94638C5-D756-48A8-B810-1DCE9208305F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B94638C5-D756-48A8-B810-1DCE9208305F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
