@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "creating_foxdbaccess", "cre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "executing_command", "executing_command\executing_command.csproj", "{755D801F-1FD9-4863-95B4-C5D9B5DE7840}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transaction_management", "transaction_management\transaction_management.csproj", "{E05A75F5-2B87-4FB0-945B-93EB987E33D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +29,15 @@ Global
 		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755D801F-1FD9-4863-95B4-C5D9B5DE7840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E05A75F5-2B87-4FB0-945B-93EB987E33D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E05A75F5-2B87-4FB0-945B-93EB987E33D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E05A75F5-2B87-4FB0-945B-93EB987E33D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E05A75F5-2B87-4FB0-945B-93EB987E33D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {266931B5-96FA-4D56-A6AE-C35E8579136E}
 	EndGlobalSection
 EndGlobal

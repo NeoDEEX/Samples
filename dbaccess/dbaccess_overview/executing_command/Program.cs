@@ -1,4 +1,5 @@
-﻿using NeoDEEX.Data;
+﻿using Microsoft.Extensions.Configuration;
+using NeoDEEX.Data;
 using NeoDEEX.Data.NpgsqlClient;
 using NeoDEEX.Data.Query;
 using Npgsql;
@@ -12,11 +13,15 @@ internal class Program
 
     static void Main()
     {
+        // 연결 문자열 노출을 막기 위해 user-secrets 에서 연결 문자열을 읽어 재설정합니다.
+        IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+        FoxDatabaseConfig.ConnectionStrings.ReloadConnectionStringFromConfig(config);
+
         //string dbName = "PostgreSQL";
         //DeleteTestData(dbName);
         ExecutingSqlDataSet();
         //CreateCommandAndExecute();
-        //ExecutingExternalCommand();
+        ExecutingExternalCommand();
         //CreatingFoxQueryCommandAndExecute();
         //ExecutingFoxQuery();
         //ExecutingSqlList();
@@ -75,10 +80,10 @@ internal class Program
     // 또한 99번 id를 가진 데이터가 존재하면 안됨.
     static void ExecutingExternalCommand()
     {
-        using FoxNpgsqlDbAccess dbAccess = FoxDbAccess.CreateDbAccess<FoxNpgsqlDbAccess>();
-        NpgsqlDataAdapter adapter = dbAccess.CreateDataAdapter();
+        using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
+        IDbDataAdapter adapter = dbAccess.CreateDataAdapter();
         adapter.SelectCommand = dbAccess.CreateCommand("SELECT * FROM my_demo_table", CommandType.Text);
-        NpgsqlCommandBuilder builder = new(adapter);
+        NpgsqlCommandBuilder builder = new((NpgsqlDataAdapter)adapter);
         NpgsqlCommand command = builder.GetInsertCommand();
         command.Parameters["p1"].Value = 99;
         command.Parameters["p2"].Value = "str99";

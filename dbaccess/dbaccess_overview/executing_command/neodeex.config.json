@@ -5,11 +5,11 @@
     "connectionStrings": {
       "PostgreSQL": {
         "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
-        "connectionString": "... your_connection_string ..."
+        "connectionString": "connectionStrings:PostgreSQL"
       },
       "Oracle": {
         "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
-        "connectionString": "... your_connection_string ..."
+        "connectionString": "connectionStrings:Oracle"
       }
     }
   }

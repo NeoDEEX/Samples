@@ -10,6 +10,10 @@
       "Oracle": {
         "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
         "connectionString": "connectionStrings:Oracle"
+      },
+      "SqlServer": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "connectionStrings:SqlServer"
       }
     }
   }

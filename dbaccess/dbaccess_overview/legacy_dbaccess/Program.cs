@@ -1,10 +1,19 @@
-﻿using Npgsql;
+﻿using Microsoft.Extensions.Configuration;
+using Npgsql;
 
 namespace legacy_dbaccess;
 
 internal class Program
 {
-    static readonly string ConnectionString = "... your_connection_string ...";
+    static readonly string ConnectionString;
+
+    static Program()
+    {
+        // 연결 문자열 노출을 막기 위해 user-secrets 에서 연결 문자열을 읽어 설정합니다.
+        IConfiguration config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+        string key = "ConnectionStrings:PostgreSQL";
+        ConnectionString = config[key];
+    }
 
     static void Main(string[] args)
     {

@@ -1,4 +1,5 @@
-﻿using NeoDEEX.Data;
+﻿using Microsoft.Extensions.Configuration;
+using NeoDEEX.Data;
 using NeoDEEX.Data.NpgsqlClient;
 using NeoDEEX.Data.OracleClient;
 using Npgsql;
@@ -14,13 +15,18 @@ internal class Program
 
     static void Main()
     {
+        // 연결 문자열 노출을 막기 위해 user-secrets 에서 연결 문자열을 읽어 재설정합니다.
+        IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+        FoxDatabaseConfig.ConnectionStrings.ReloadConnectionStringFromConfig(config);
+        npgsqlConnectionString = FoxDatabaseConfig.ConnectionStrings["PostgreSQL"]!.ConnectionString;
+
         //CreateConcreteClass();
         //UsingFactoryPattern();
         //CreatingSpecificDbAccess();
         AccessingConcreteDbAccess();
     }
 
-    static readonly string npgsqlConnectionString = "... your_connection_string ...";
+    static string npgsqlConnectionString = "... your_connection_string ...";
 
     static void CreateConcreteClass()
     {
