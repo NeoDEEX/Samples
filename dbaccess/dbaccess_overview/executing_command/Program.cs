@@ -21,8 +21,7 @@ internal class Program
         //DeleteTestData(dbName);
         ExecutingSqlDataSet();
         //CreateCommandAndExecute();
-        ExecutingExternalCommand();
-        //CreatingFoxQueryCommandAndExecute();
+        //ExecutingExternalCommand();
         //ExecutingFoxQuery();
         //ExecutingSqlList();
         //ExecutingSqlNonQuery(dbName);

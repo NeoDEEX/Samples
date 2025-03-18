@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transaction_management", "t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db_parameters", "db_parameters\db_parameters.csproj", "{350EBF01-4844-475F-969D-BACA886CC6F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exception_handling", "exception_handling\exception_handling.csproj", "{F87B9AB9-39C7-4125-BE6E-8553FBCF6A0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{350EBF01-4844-475F-969D-BACA886CC6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{350EBF01-4844-475F-969D-BACA886CC6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{350EBF01-4844-475F-969D-BACA886CC6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87B9AB9-39C7-4125-BE6E-8553FBCF6A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87B9AB9-39C7-4125-BE6E-8553FBCF6A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87B9AB9-39C7-4125-BE6E-8553FBCF6A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87B9AB9-39C7-4125-BE6E-8553FBCF6A0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
