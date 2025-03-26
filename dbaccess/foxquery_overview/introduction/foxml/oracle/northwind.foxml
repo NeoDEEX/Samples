@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="select_categories">
+      <text>
+        SELECT * FROM categories
+      </text>
+    </statement>
+    <statement id="get_product">
+      <text>
+        <![CDATA[
+        SELECT * FROM products WHERE product_id < #product_id#
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="product_id" dbType="Integer"/>
+      </parameters>
+    </statement>
+    <statement id="product_count">
+      <text>
+        <![CDATA[
+        SELECT COUNT(*) FROM products WHERE category_id = #category_id#
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="category_id" dbType="Smallint"/>
+      </parameters>
+    </statement>
+    <procedure id="get_categories">
+      <text>get_categories</text>
+      <parameters>
+        <parameter name="cur" dbType="RefCursor" direction="Output"/>
+      </parameters>
+    </procedure>
+    <statement id="search_product">
+      <text>
+        SELECT product_id, product_name FROM products
+        WHERE discontinued = 0 $$SEARCH_CONDITION()$$
+      </text>
+      <macros>
+        <macro name="SEARCH_CONDITION">
+          <![CDATA[
+          if (env.Args["product_name"] != null)
+            return "AND product_name LIKE #product_name#";
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+  </statements>
+</queryMap>
