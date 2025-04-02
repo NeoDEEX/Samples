@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "introduction", "introduction\introduction.csproj", "{95837CF2-0D4C-4B79-BFCE-484DCEBFC3A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foxml_file", "foxml_file\foxml_file.csproj", "{EBEC1295-07B0-4AD0-A914-3F3E9A26539D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{95837CF2-0D4C-4B79-BFCE-484DCEBFC3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95837CF2-0D4C-4B79-BFCE-484DCEBFC3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95837CF2-0D4C-4B79-BFCE-484DCEBFC3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEC1295-07B0-4AD0-A914-3F3E9A26539D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEC1295-07B0-4AD0-A914-3F3E9A26539D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEC1295-07B0-4AD0-A914-3F3E9A26539D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEC1295-07B0-4AD0-A914-3F3E9A26539D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,7 @@
         ]]>
       </text>
       <parameters>
-        <parameter name="product_id" dbType="Integer"/>
+        <parameter name="product_id" dbType="Int32"/>
       </parameters>
     </statement>
     <statement id="product_count">
@@ -23,7 +23,7 @@
         ]]>
       </text>
       <parameters>
-        <parameter name="category_id" dbType="Smallint"/>
+        <parameter name="category_id" dbType="Int16"/>
       </parameters>
     </statement>
     <procedure id="get_categories">

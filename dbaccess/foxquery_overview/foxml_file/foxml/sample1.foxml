@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <alias>
+    <parameter id="pid" name="product_id" dbType="Integer"/>
+    <parameter id="cid" name="category_id" dbType="Smallint"/>
+  </alias>
+  <statements>
+    <statement id="get_product">
+      <text>
+        <![CDATA[
+        SELECT * FROM products WHERE product_id < #product_id# AND category_id = #category_id#
+        ]]>
+      </text>
+      <parameters>
+        <parameter ref="pid"/>
+        <parameter ref="cid"/>
+      </parameters>
+    </statement>
+    <statement id="get_product_by_category">
+      <text>
+        SELECT * FROM products WHERE category_id = #category_id#
+      </text>
+      <parameters>
+        <parameter ref="cid"/>
+      </parameters>
+    </statement>
+    <statement id="id1">
+      <text>SELECT #p0# AS p0, #p1# AS p1, #p2# AS p2</text>
+      <parameters>
+        <parameter name="p0" dbType="varchar" />
+        <parameter name="p2" dbType="int32" />
+      </parameters>
+    </statement>
+    <statement id="ambient_demo">
+      <text>SELECT #msg# || #uid# AS user_id</text>
+      <parameters>
+        <parameter name="msg" />
+        <parameter name="uid" property="UserInfo.UserId" ambient="true"/>
+      </parameters>
+    </statement>
+    <statement id="search_product">
+      <text>
+        SELECT product_id, product_name FROM products
+        WHERE discontinued = 0 $$SEARCH_CONDITION()$$
+      </text>
+      <macros>
+        <macro name="SEARCH_CONDITION">
+          <![CDATA[
+          if (env.Args["product_name"] != null)
+            return "AND product_name LIKE #product_name#";
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+  </statements>
+</queryMap>
