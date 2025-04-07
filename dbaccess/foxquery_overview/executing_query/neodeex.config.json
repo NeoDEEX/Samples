@@ -1,0 +1,11 @@
+﻿{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="get_product">
+      <text>
+        <![CDATA[
+        SELECT * FROM products WHERE product_id < #product_id# AND category_id = #category_id#
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="product_id" dbType="Integer"/>
+        <parameter name="category_id" dbType="Smallint"/>
+      </parameters>
+    </statement>
+    <statement id="get_demo">
+      <text>
+        SELECT * FROM my_demo_table WHERE col_id > #col_id# ORDER BY col_id
+      </text>
+    </statement>
+    <statement id="insert_demo">
+      <text>
+        INSERT INTO my_demo_table VALUES(#col_id#, #col_str#, #col_int#)
+      </text>
+    </statement>
+    <statement id="update_demo">
+      <text>
+        UPDATE my_demo_table SET col_str = #col_str#, col_int = #col_int# WHERE col_id = #col_id#
+      </text>
+    </statement>
+    <statement id="delete_demo">
+      <text>
+        DELETE FROM my_demo_table WHERE col_id = #col_id#
+      </text>
+      <parameters>
+        <parameter name="col_id" rowVersion="Original"/>
+      </parameters>
+    </statement>
+    <statement id="delete_test_data">
+      <text>
+        DELETE FROM my_demo_table WHERE col_id > #col_id#
+      </text>
+    </statement>
+  </statements>
+</queryMap>
