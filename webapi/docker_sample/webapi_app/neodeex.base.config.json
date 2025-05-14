@@ -1,0 +1,46 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "appSettings": {
+    "userSecretsId": "c18228dc-8c4a-4f10-9752-1701cce0ce4e"
+  },
+  "database": {
+    "connectionStrings": {
+      "PostgreSQL": {
+        "connectionString": "your connection string",
+        "userSecrets": true,
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess"
+      }
+    }
+  },
+  "webapiServer": {
+    "useTypeInfo": false,
+    "detailedErrorInfo": true,
+    "returnServerInfo": true
+  },
+  "dataService": {
+    "diagnostics": {
+      "enable": true,
+      "detailedDbProfile": true,
+      "loggerName": "dataservice"
+    }
+  },
+  "bizService": {
+    "modules": [
+      "./bizmodules/*.dll"
+    ],
+    "diagnostics": {
+      "loggerName": "bizservice"
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "dataservice": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "bizservice": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}

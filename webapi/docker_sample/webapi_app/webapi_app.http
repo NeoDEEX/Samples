@@ -1,0 +1,29 @@
+@webapi_app_HostAddress = http://localhost:5260
+
+POST {{webapi_app_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+
+{
+  "queryId": "northwind:get_all_products"
+}
+###
+
+POST {{webapi_app_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+{
+  "queryId": "northwind:get_products_by_name",
+  "parameters": {
+    "product_name": "Che%"
+  }
+}
+###
+
+POST {{webapi_app_HostAddress}}/api/bizservice/execute
+Accept: application/json
+{
+  "classId": "northwind",
+  "methodId": "get_products_by_name",
+  "parameters": {
+    "product_name": "Chef"
+  }
+}

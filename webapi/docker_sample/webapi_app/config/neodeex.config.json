@@ -1,0 +1,11 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "$baseConfig": "neodeex.base.config.json",
+  "database": {
+    "connectionStrings": {
+      "PostgreSQL": {
+        "connectionString": "connectionStrings:PostgreSQL"
+      }
+    }
+  }
+}
