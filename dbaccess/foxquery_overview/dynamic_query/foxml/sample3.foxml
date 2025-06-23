@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="dynamic">
+      <text>
+        SELECT product_id, product_name FROM products
+        WHERE discontinued = 0 $$SEARCH_CONDITION()$$
+      </text>
+      <macros>
+        <macro name="SEARCH_CONDITION">
+          <![CDATA[
+          if (env.Args.product_name != null)
+            return "AND product_name LIKE #product_name#";
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="echo_arg">
+      <text>
+        SELECT '$$ECHO_ARG()$$' AS ARG
+      </text>
+      <macros>
+        <macro name="ECHO_ARG">
+          <![CDATA[
+          // 매우 위험한 동적 쿼리 입니다. 사용자로부터 제공된 값을 그대로 SQL 문장에 삽입하기 때문입니다.
+          return env.Args.param1 + ":" + env.Args["param2"] + ":" + env.Args["param3"];
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="echo_arg2">
+      <text>
+        SELECT $$ECHO_ARG()$$ AS ARG
+      </text>
+      <macros>
+        <macro name="ECHO_ARG">
+          <![CDATA[
+          var sb = new StringBuilder();
+          foreach(var key in env.Args)
+          {
+            env.WriteLog($"{key}={env.Args[key]}");
+            sb.Append(key).Append(":").Append(env.Args[key]).Append(", ");
+          }
+          sb.Remove(sb.Length - 2, 2);
+          // Parameterized 쿼리를 위해 매개변수 추가
+          env.Params.Add("arg_list");
+          // 매개변수 인자 값 추가
+          env.Args.Add("arg_list", sb.ToString());
+          return "#arg_list#";
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dump_params">
+      <text>
+        SELECT $$DUMP_PARAMS()$$ AS PARAM_LIST
+      </text>
+      <parameters>
+        <parameter name="param1" dbType="Varchar" size="30" />
+        <parameter name="param2" dbType="Date"/>
+      </parameters>
+      <macros>
+        <macro name="DUMP_PARAMS">
+          <![CDATA[
+          var p1 = env.Params["param1"];
+          env.WriteLog($"name={p1.Name} dbType={p1.DbTypeName} size={p1.Size}");
+          var p2 = env.Params.param2;
+          env.WriteLog($"name={p2.Name} dbType={p2.DbTypeName} size={p2.Size}");
+          // 매개변수 목록을 반환합니다.          
+          var sb = new StringBuilder();
+          foreach(var p in env.Params)
+          {
+            env.WriteLog($"{p.Name} dbType={p.DbTypeName} size={p.Size}");
+            sb.Append(p.Name).Append(":").Append(p.DbTypeName).Append(":").Append(p.Size).Append(", ");
+          }
+          sb.Remove(sb.Length - 2, 2);
+          // Parameterized 쿼리를 위해 매개변수 추가
+          env.Params.Add("param_list", "Varchar", 128);
+          // 매개변수 인자 값 추가
+          env.Args.Add("param_list", sb.ToString());
+          return "#param_list#";
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_insert_manually">
+      <text>
+        INSERT INTO my_demo_table $$INSERT_COLUMNS()$$
+        VALUES $$INSERT_VALUES()$$
+      </text>
+      <macros>
+        <macro name="INSERT_COLUMNS">
+          <![CDATA[
+          var sb = new StringBuilder().Append('(');
+          foreach(var key in env.Args)
+          {
+            sb.Append(key).Append(", ");
+          }
+          if (sb.Length > 0) sb.Remove(sb.Length - 2, 2);
+          return sb.Append(')').ToString();
+          ]]>
+        </macro>
+        <macro name="INSERT_VALUES">
+          <![CDATA[
+          var sb = new StringBuilder().Append('(');
+          foreach(var key in env.Args)
+          {
+            sb.AppendSurroundWith(key, "#", false).Append(", ");
+          }
+          if (sb.Length > 0) sb.Remove(sb.Length - 2, 2);
+          return sb.Append(')').ToString();
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_in">
+      <text>
+        SELECT * FROM products WHERE category_id $$IN_CLAUSE()$$
+      </text>
+      <macros>
+        <macro name="IN_CLAUSE">
+          <![CDATA[
+          return SQL.IN(env.Args.categories, false);
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_in2">
+      <text>
+        SELECT * FROM products WHERE category_id $$IN_CLAUSE()$$
+      </text>
+      <macros>
+        <macro name="IN_CLAUSE">
+          <![CDATA[
+          //return SQL.IN(env.Args.categories, env.Args, env.Params);
+          return SQL.IN(env.Args.categories, env);
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_update">
+      <text>
+        UPDATE my_demo_table $$SET_CLAUSE()$$
+        WHERE col_id = #col_id#
+      </text>
+      <macros>
+        <macro name="SET_CLAUSE">
+          <![CDATA[
+          var dic = env.Args.ToDictionary();
+          dic.Remove("col_id");
+          return SQL.SET(dic, true);
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_update2">
+      <text>
+        UPDATE my_demo_table $$SET_CLAUSE()$$
+        WHERE col_id = #col_id#
+      </text>
+      <macros>
+        <macro name="SET_CLAUSE">
+          <![CDATA[
+          var dic = env.Args.ToDictionary();
+          dic.Remove("col_id");
+          return SQL.SET(dic, env);
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_insert">
+      <text>
+        INSERT INTO my_demo_table $$COLUMNS()$$ $$VALUES_CLAUSE()$$
+      </text>
+      <macros>
+        <macro name="COLUMNS">
+          <![CDATA[
+          return SQL.COLUMNS(env.Args);
+          ]]>
+        </macro>
+        <macro name="VALUES_CLAUSE">
+          <![CDATA[
+          var dic = env.Args.ToDictionary();
+          return SQL.VALUES(dic.Values);
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="dynamic_insert2">
+      <text>
+        INSERT INTO my_demo_table $$COLUMNS()$$ $$VALUES_CLAUSE()$$
+      </text>
+      <macros>
+        <macro name="COLUMNS">
+          <![CDATA[
+          return SQL.COLUMNS(env.Args);
+          ]]>
+        </macro>
+        <macro name="VALUES_CLAUSE">
+          <![CDATA[
+          return SQL.VALUES(env.Args.ToDictionary(), env);
+          ]]>
+        </macro>
+      </macros>
+    </statement>
+    <statement id="get_demo_table">
+      <text>SELECT * FROM my_demo_table WHERE col_id >= 999</text>
+    </statement>
+  </statements>
+</queryMap>

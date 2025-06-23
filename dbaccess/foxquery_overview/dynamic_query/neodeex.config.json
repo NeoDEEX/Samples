@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true,
+        "queryMapper": "MyMapper"
+      }
+    },
+    "queryMappers": {
+      "MyMapper": {
+        "directories": [ "./foxml" ],
+        "scriptLogger": "MacroLogger"
+      }
+    }
+  },
+  "logging": {
+    "loggers": {
+      "MacroLogger": {
+        "filter": "Verbose",
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}
