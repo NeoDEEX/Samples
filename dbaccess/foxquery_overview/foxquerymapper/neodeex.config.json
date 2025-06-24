@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "Oracle",
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true
+      },
+      "Oracle": {
+        "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
+        "connectionString": "connectionStrings:Oracle",
+        "userSecrets": true,
+        "queryMapper": "MyOracleMapper"
+      }
+    },
+    "queryMappers": {
+      "MyOracleMapper": {
+        "files": [ "./oracle/foxml/northwind.foxml" ]
+      }
+    }
+  }
+}
