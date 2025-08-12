@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "PostgreSQL",
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true,
+        "dbProfile": {
+          "loggerName": "TextFileLogger"
+        }
+      },
+      "Oracle": {
+        "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
+        "connectionString": "connectionStrings:Oracle",
+        "userSecrets": true
+      }
+    },
+    "dbProfile": {
+      "enable": true,
+      "loggerName": "ConsoleLogger",
+      "executionTime": 200,
+      "diagnostics": true
+    }
+  },
+  "logging": {
+    "loggers": {
+      "ConsoleLogger": {
+        "filter": "Information",
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "TextFileLogger": {
+        "filter": "Information",
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "fileprefix": "dbprofile",
+          "directory": "logs",
+          "creation": "Daily"
+        }
+      }
+    }
+  }
+}
