@@ -9,7 +9,7 @@
         "userSecrets": true,
         "dbProfile": {
           "enable": true,
-          "loggerName": "ProfileLogger",
+          "loggerName": "ProfileDbLogger",
           "diagnostics": true
         }
       },
@@ -31,6 +31,17 @@
         "providerType": "dbprofile_usage.DbProfileLoggerProvider, dbprofile_usage",
         "properties": {
           "connectionStringName": "LoggingDb"
+        }
+      },
+      "ProfileDbLogger": {
+        "filter": "Information",
+        "providerType": "dbprofile_usage.ProfileDbLoggerProvider, dbprofile_usage",
+        "properties": {
+          "connectionStringName": "LoggingDb",
+          "commandType": "FoxQuery",
+          "commandText": "logging.insert_dbprofile",
+          "operationMode": "Synchronous",
+          "maxConcurrency": "4"
         }
       }
     }

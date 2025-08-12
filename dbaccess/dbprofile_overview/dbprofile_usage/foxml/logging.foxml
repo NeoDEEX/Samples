@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="insert_dbprofile">
+      <text>
+        <![CDATA[
+        INSERT INTO DbProfile VALUES(:log_id, :log_time, :info)
+        ]]>
+      </text>
+      <parameters>
+        <parameter name="log_id" dbType="Varchar"/>
+        <parameter name="log_time" dbType="Timestamp"/>
+        <parameter name="info" dbType="Jsonb"/>
+      </parameters>
+    </statement>
+  </statements>
+</queryMap>
