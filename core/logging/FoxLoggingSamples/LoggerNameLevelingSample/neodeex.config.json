@@ -1,0 +1,22 @@
+{
+  "logging": {
+    "providers": {
+      "DebugProvider": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxDebugLoggerProvider"
+      },
+      "ConsoleProvider": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    },
+    "loggers": {
+      "HR.Salary": {
+        "providerName": "ConsoleProvider",
+        "filter": "Verbose"
+      },
+      "HR.Etc": {
+        "providerName": "DebugProvider",
+        "filter": "Verbose"
+      }
+    }
+  }
+}

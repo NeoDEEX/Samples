@@ -1,0 +1,29 @@
+{
+  "logging": {
+    "filter": "Verbose",
+    "providers": {
+      "CustomProvider": {
+        "providerType": "LoggerLib.CustomLoggerProvider, LoggerLib",
+        "properties": {
+          "console": "ConsoleLogger",
+          "file": "TextFileLogger"
+        }
+      }
+    },
+    "loggers": {
+      "CustomLogger": {
+        "providerName": "CustomProvider"
+      },
+      "ConsoleLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "TextFileLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "fileprefix": "Sample",
+          "directory": "~/Logs"
+        }
+      }
+    }
+  }
+}

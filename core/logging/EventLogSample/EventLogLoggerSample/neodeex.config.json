@@ -1,0 +1,20 @@
+{
+  "logging": {
+    "providers": {
+      "EventLogProvider": {
+        "providerType": "NeoDEEX.Extensions.Diagnostics.Loggers.FoxEventLogLoggerProvider",
+        "properties": {
+          "eventlog": "NeoDEEX5",
+          "eventsource": "EventLogSample",
+          "createLog": false
+        }
+      }
+    },
+    "loggers": {
+      "EventLogLoggerSample": {
+        "providerName": "EventLogProvider",
+        "filter": "Verbose"
+      }
+    }
+  }
+}

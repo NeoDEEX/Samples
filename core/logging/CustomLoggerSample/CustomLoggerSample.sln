@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLib", "LoggerLib\LoggerLib.csproj", "{014E662D-D5BE-4515-B446-E9004E037CC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{6EED8632-5E29-499C-B70C-4E5CD53ED7E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{014E662D-D5BE-4515-B446-E9004E037CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014E662D-D5BE-4515-B446-E9004E037CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014E662D-D5BE-4515-B446-E9004E037CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014E662D-D5BE-4515-B446-E9004E037CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EED8632-5E29-499C-B70C-4E5CD53ED7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EED8632-5E29-499C-B70C-4E5CD53ED7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EED8632-5E29-499C-B70C-4E5CD53ED7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EED8632-5E29-499C-B70C-4E5CD53ED7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CC803B4-BFB0-46B5-9B59-64B18C9FC8E3}
+	EndGlobalSection
+EndGlobal

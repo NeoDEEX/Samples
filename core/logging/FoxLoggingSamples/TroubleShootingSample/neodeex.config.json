@@ -1,0 +1,10 @@
+{
+  "logging": {
+    "loggers": {
+      "HR.Salary.SalaryService": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider",
+        "filter": "Verbose"
+      }
+    }
+  }
+}

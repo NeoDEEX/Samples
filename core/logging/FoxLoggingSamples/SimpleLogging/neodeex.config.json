@@ -1,0 +1,28 @@
+{
+  "logging": {
+    "providers": {
+      "MyLoggerProvider1": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "MyLoggerProvider2": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxDebugLoggerProvider"
+      },
+      "MyLoggerProvider3": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "filePrefix": "MyLog",
+          "directory": "~/Logs",
+          "creation": "None",
+          "maxSize": "64KB",
+          "exclusiveLock": true
+        }
+      }
+    },
+    "loggers": {
+      "MyLogger": {
+        "providerName": "MyLoggerProvider1",
+        "filter": "Information"
+      }
+    }
+  }
+}

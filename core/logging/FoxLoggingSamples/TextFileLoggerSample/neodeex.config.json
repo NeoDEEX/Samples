@@ -1,0 +1,31 @@
+{
+  "logging": {
+    "providers": {
+      "TextFileProvider": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "fileprefix": "MyLog",
+          "directory": "~/Logs",
+          "creation": "None",
+          "maxsize": 16,
+          "encoding": "ks_c_5601-1987",
+          "exclusiveLock": false
+        }
+      }
+    },
+    "loggers": {
+      "MyLogger": {
+        "providerName": "TextFileProvider",
+        "filter": "Verbose"
+      },
+      "YourLogger": {
+        "providerName": "TextFileProvider",
+        "filter": "Verbose",
+        "properties": {
+          "fileprefix": "YourLog",
+          "creation": "Daily"
+        }
+      }
+    }
+  }
+}
