@@ -13,7 +13,7 @@ namespace dbprofile_usage;
 // 비동기(TPL) 로 설정할 경우 로그가 별도의 스레드 풀을 사용하여 비동기적으로 기록되기 때문에 로그가 기록되기 전에
 // 콘솔 어플리케이션이 종료될 수 있습니다.
 //
-public class ProfileDbLogger(string loggerName) : FoxDbLoggerBase(loggerName)
+public class DbProfileDbLogger(string loggerName) : FoxDbLoggerBase(loggerName)
 {
     // 사용할 FoxQuery 에 대한 매개변수 인자값을 반환합니다.
     protected override object GetParameterObject(FoxLogEntry logEntry)

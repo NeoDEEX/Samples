@@ -16,7 +16,8 @@
       "LoggingDb": {
         "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
         "connectionString": "connectionStrings:PostgreSQL",
-        "userSecrets": true
+        "userSecrets": true,
+        "dbProfile": { "enable": false }
       }
     }
   },
@@ -35,7 +36,7 @@
       },
       "ProfileDbLogger": {
         "filter": "Information",
-        "providerType": "dbprofile_usage.ProfileDbLoggerProvider, dbprofile_usage",
+        "providerType": "dbprofile_usage.DbProfileDbLoggerProvider, dbprofile_usage",
         "properties": {
           "connectionStringName": "LoggingDb",
           "commandType": "FoxQuery",
