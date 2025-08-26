@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbprofile_gen_app", "dbprofile_gen_app\dbprofile_gen_app.csproj", "{F7DA47AF-E177-4FE5-B0C7-55526571523E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoDEEX.Extensions.Mongodb", "NeoDEEX.Extensions.Mongodb\NeoDEEX.Extensions.Mongodb.csproj", "{DC51A4E6-5646-4BE1-964B-7493ABF51DC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7DA47AF-E177-4FE5-B0C7-55526571523E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DA47AF-E177-4FE5-B0C7-55526571523E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DA47AF-E177-4FE5-B0C7-55526571523E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DA47AF-E177-4FE5-B0C7-55526571523E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC51A4E6-5646-4BE1-964B-7493ABF51DC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC51A4E6-5646-4BE1-964B-7493ABF51DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC51A4E6-5646-4BE1-964B-7493ABF51DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC51A4E6-5646-4BE1-964B-7493ABF51DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DB36F4C-72D3-483E-9D7A-027CA8A50C95}
+	EndGlobalSection
+EndGlobal

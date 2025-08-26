@@ -1,0 +1,33 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "Oracle",
+    "connectionStrings": {
+      "Oracle": {
+        "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
+        "connectionString": "connectionStrings:Oracle",
+        "userSecrets": true,
+        "dbProfile": {
+          "enable": true,
+          "loggerName": "DbProfileLogger",
+          "diagnostics": true
+        }
+      }
+    }
+  },
+  "logging": {
+    "loggers": {
+      "DbProfileLogger": {
+        "filter": "Information",
+        "providerType": "NeoDEEX.Extensions.Mongodb.DbProfileLoggerProvider, NeoDEEX.Extensions.Mongodb",
+        "properties": {
+          "connectionString": "connectionStrings:MongoDB",
+          "database": "test_db",
+          "collection": "dbprofile",
+          "userSecrets": "true",
+          "diagnostics": "false"
+        }
+      }
+    }
+  }
+}
