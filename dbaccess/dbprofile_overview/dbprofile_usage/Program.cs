@@ -13,7 +13,7 @@ internal class Program
         FoxDatabaseConfig.ExternalConfiguration = config;
 
         SimpleDbProfile();
-        //UpdateForGenerateDbProfileInfo();
+        UpdateForGenerateDbProfileInfo();
     }
 
     static void SimpleDbProfile()
@@ -35,12 +35,26 @@ internal class Program
         using FoxDbAccess dbAccess = FoxDbAccess.CreateDbAccess();
         dbAccess.CallerName = nameof(UpdateForGenerateDbProfileInfo);
         DataSet ds = dbAccess.ExecuteSqlDataSet("SELECT * FROM products");
+        Random rand = new();
         foreach (DataRow row in ds.Tables[0].Rows)
         {
             int productId = row.Field<int>("product_id");
             string? productName = row.Field<string>("product_name");
             if (productName == null)
             {
+                continue;
+            }
+            if (rand.Next(100) < 20)
+            {
+                try
+                {
+                    dbAccess.ExecuteSqlNonQuery("SELECT * FROM NonExistTable");
+                }
+                catch
+                {
+                    // 무시
+                }
+                Console.WriteLine($"Generate ERROR profile info: product_id={productId}");
                 continue;
             }
             FoxDbParameterCollection parameters = dbAccess.CreateParamCollection();
