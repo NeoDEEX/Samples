@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace>EventLogLoggerSample</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NeoDEEX.Core" Version="5.0.0" />
-    <PackageReference Include="NeoDEEX.Extensions" Version="5.0.0" />
+    <PackageReference Include="NeoDEEX.Core" Version="5.0.0-alpha.4" />
+    <PackageReference Include="NeoDEEX.Extensions" Version="5.0.0-alpha.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@
     "filter": "Verbose",
     "providers": {
       "CustomProvider": {
-        "providerType": "LoggerLib.CustomLoggerProvider, LoggerLib",
+        "providerType": "LoggerLib.CustomLoggerProvider, logger_lib",
         "properties": {
           "console": "ConsoleLogger",
           "file": "TextFileLogger"

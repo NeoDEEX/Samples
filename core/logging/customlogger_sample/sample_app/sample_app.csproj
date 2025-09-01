@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NeoDEEX.Core" Version="5.0.0" />
+    <PackageReference Include="NeoDEEX.Core" Version="5.0.0-alpha.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LoggerLib\LoggerLib.csproj" />
+    <ProjectReference Include="..\logger_lib\logger_lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

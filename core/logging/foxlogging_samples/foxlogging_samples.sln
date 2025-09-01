@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleLogging", "SimpleLogging\SimpleLogging.csproj", "{F0FD0F11-0BCC-4652-AC00-4D12880D326C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "simple_logging", "simple_logging\simple_logging.csproj", "{F0FD0F11-0BCC-4652-AC00-4D12880D326C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerNameLevelingSample", "LoggerNameLevelingSample\LoggerNameLevelingSample.csproj", "{D9A01D72-A70E-44EC-802A-5163EBF61437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "logger_nameleveling_sample", "logger_nameleveling_sample\logger_nameleveling_sample.csproj", "{D9A01D72-A70E-44EC-802A-5163EBF61437}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TroubleShootingSample", "TroubleShootingSample\TroubleShootingSample.csproj", "{50664FC9-9ED8-4E94-A0AA-FE80B3CECCD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "trouble_shooting_sample", "trouble_shooting_sample\trouble_shooting_sample.csproj", "{50664FC9-9ED8-4E94-A0AA-FE80B3CECCD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileLoggerSample", "TextFileLoggerSample\TextFileLoggerSample.csproj", "{07BE1D5E-A98F-4A4D-8655-3ED9BA742D4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "textfile_logger_sample", "textfile_logger_sample\textfile_logger_sample.csproj", "{07BE1D5E-A98F-4A4D-8655-3ED9BA742D4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

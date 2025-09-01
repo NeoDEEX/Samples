@@ -2,7 +2,7 @@
 
 이 예제는 Fox Logging의 로거 이름 레벨링 기능을 보여주는 예제 프로그램입니다. 로거 이름 레벨링에 대한 상세한 정보는 다음 문서를 참고하십시요.
 
-* [로거 이름 레벨링](/doc/manual/logging/nameleveling.md)
+* [로거 이름 레벨링](https://neodeex.github.io/doc/core/logging/nameleveling/)
 
 ---
 
