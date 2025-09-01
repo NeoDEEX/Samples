@@ -1,0 +1,25 @@
+﻿{
+  // 어플리케이션 설정
+  "appSettings": {
+    "setting1": "value1",
+    "setting2": "value2",
+    "setting3": true,
+    "setting4": 32,
+    // 하위 객체를 갖는 설정
+    "complex": {
+      "subkey1": "value3",
+      "subkey2": false,
+      "stringList": [ "str1", "str2", "str3"],
+      "subObject": {
+        "name": "myName",
+        "value": "myValue"
+      }
+    },
+    "array": [ "str1", "str2", "str3"],
+    "dic": {
+      "key1": "value1",
+      "key2": 2,
+      "key3": true
+    }
+  }
+}

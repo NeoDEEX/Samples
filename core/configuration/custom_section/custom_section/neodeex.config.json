@@ -1,0 +1,10 @@
+{
+  "mySettings": {
+    "stringProp": "StringValue1",
+    "stringList": [ "str1", "str2", "str3", "str4" ],
+    "subObject": {
+      "name": "myName",
+      "value":  "myValue"
+    }
+  }
+}
