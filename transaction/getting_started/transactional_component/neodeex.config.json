@@ -1,0 +1,10 @@
+{
+  "database": {
+    "connectionStrings": {
+      "default": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "SERVER=(LocalDB)\\MSSQLLocalDB;DATABASE=TestDB;Trusted_Connection=True"
+      }
+    }
+  }
+}
