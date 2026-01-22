@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/README/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="commit_rollback/commit_rollback.csproj" />
+</Solution>
