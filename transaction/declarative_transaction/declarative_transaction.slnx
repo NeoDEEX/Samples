@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/database/">
+    <File Path="database/db_schema.sql" />
+  </Folder>
+  <Folder Name="/document/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="memolib/memolib.csproj" Id="66583057-e780-4fab-853f-8436e72fff1c" />
+  <Project Path="webapi_app/webapi_app.csproj" />
+</Solution>
