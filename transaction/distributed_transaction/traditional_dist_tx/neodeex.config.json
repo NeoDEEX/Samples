@@ -1,0 +1,29 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "appSettings": {
+    "FoxTransactionComplusCompatible": false
+  },
+  "database": {
+    "connectionStrings": {
+      "Oracle": {
+        "type": "NeoDEEX.Data.OracleClient.FoxOracleDbAccess",
+        "connectionString": "connectionStrings:OracleTxTestDB",
+        "userSecrets": true
+      },
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQLTestDB",
+        "userSecrets": true
+      },
+      "SqlServer": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "connectionStrings:LocalSqlServerTestDB",
+        "userSecrets": true
+      },
+      "SqlServerNoPooling": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "Data Source=(LocalDB)\\MSSQLLocalDB;Database=TestDB;Integrated Security=True;pooling=false"
+      }
+    }
+  }
+}

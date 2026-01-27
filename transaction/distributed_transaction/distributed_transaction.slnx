@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="common/common.csproj" Id="fbad4591-bbe8-4949-b13a-60285f6a8b35" />
+  <Project Path="fox_transactions_dist_tx/fox_transactions_dist_tx.csproj" Id="7b17f360-4a15-4a06-97b0-1956f983c3ff" />
+  <Project Path="fox_transactions_local_tx/fox_transactions_local_tx.csproj" Id="c34995e5-179c-45ea-adde-ea256e4d4a43" />
+  <Project Path="traditional_dist_tx/traditional_dist_tx.csproj" />
+  <Project Path="traditional_local_tx/traditional_local_tx.csproj" Id="2eadfa99-3bff-49de-9652-5cefab6b6a2a" />
+</Solution>
