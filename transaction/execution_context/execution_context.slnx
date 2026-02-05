@@ -1,3 +1,6 @@
 <Solution>
+  <Folder Name="/doc/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="execution_context/execution_context.csproj" />
 </Solution>
