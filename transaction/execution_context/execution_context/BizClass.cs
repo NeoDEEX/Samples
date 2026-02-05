@@ -49,13 +49,9 @@ public class BizClass : FoxBizBase, IBizClass
     }
 
     [FoxAutoComplete]
+    [FoxTransaction(FoxTransactionOption.Supported)]
     public void ShowContextInfo()
     {
-        AnsiConsole.MarkupLine("[gray]Executing transactional method... [/]");
-        AnsiConsole.MarkupLine($"  [white]IsInContext = [/][blue]{FoxContextUtil.IsInContext}[/]");
-        AnsiConsole.MarkupLine($"  [white]IsInTransaction = [/][blue]{FoxContextUtil.IsInTransaction}[/]");
-        AnsiConsole.MarkupLine($"  [white]IsAutoComplete = [/][blue]{FoxContextUtil.IsAutoComplete}[/]");
-
         FoxExecutionContext ctx = this.Context;
         ctx.Dump();
     }

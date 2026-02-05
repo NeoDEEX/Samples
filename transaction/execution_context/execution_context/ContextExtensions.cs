@@ -21,17 +21,20 @@ internal static class ContextExtensions
         AnsiConsole.MarkupLine($"    [white]Target Method = [/][blue]{ctx.MethodName}[/]");
         AnsiConsole.MarkupLine($"    [white]Parameters = [/][blue]{ctx.MethodCallMessage.Args.Length}[/]");
         ParameterInfo[] infos = ctx.MethodBase.GetParameters();
-        StringBuilder sb = new(128);
-        for (int i = 0; i < infos.Length; i++)
+        if (infos.Length > 0)
         {
-            ParameterInfo pi = infos[i];
-            string valueString = ctx.MethodCallMessage.Args[i]?.ToString() ?? "(null)";
-            sb.Append("      [gray]").Append(pi.Name).Append(" : ")
-                .Append(Markup.Escape(valueString))
-                .AppendLine("[/]");
+            StringBuilder sb = new(128);
+            for (int i = 0; i < infos.Length; i++)
+            {
+                ParameterInfo pi = infos[i];
+                string valueString = ctx.MethodCallMessage.Args[i]?.ToString() ?? "(null)";
+                sb.Append("      [gray]").Append(pi.Name).Append(" : ")
+                    .Append(Markup.Escape(valueString))
+                    .AppendLine("[/]");
+            }
+            sb.Remove(sb.Length - Environment.NewLine.Length, Environment.NewLine.Length);
+            AnsiConsole.MarkupLine(sb.ToString());
         }
-        sb.Remove(sb.Length - Environment.NewLine.Length, Environment.NewLine.Length);
-        AnsiConsole.MarkupLine(sb.ToString());
         AnsiConsole.MarkupLine($"    [white]Is AutoComplete = [/][blue]{ctx.IsAutoComplete}[/]");
         AnsiConsole.MarkupLine($"    [white]Transaction Option = [/][blue]{ctx.TransactionInfo.TransactionOption}[/]");
         AnsiConsole.MarkupLine($"    [white]Isolation Level = [/][blue]{ctx.TransactionInfo.IsolationLevel}[/]");
