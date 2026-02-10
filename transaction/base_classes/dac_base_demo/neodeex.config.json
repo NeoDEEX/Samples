@@ -1,0 +1,18 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "SqlServer",
+    "connectionStrings": {
+      "SqlServer": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "connectionStrings:LocalSqlServerTestDB",
+        "userSecrets": true
+      },
+      "PostgreSql": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true
+      }
+    }
+  }
+}

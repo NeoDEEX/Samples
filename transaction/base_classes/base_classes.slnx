@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/database/">
+    <File Path="database/db_schema.sql" />
+  </Folder>
+  <Folder Name="/doc/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="component_base_demo/component_base_demo.csproj" />
+  <Project Path="dac_base_demo/dac_base_demo.csproj" Id="168f6d8f-ed95-407b-a4dc-984c409b0548" />
+</Solution>

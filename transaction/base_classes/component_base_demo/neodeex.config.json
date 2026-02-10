@@ -1,0 +1,20 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQLTestDB",
+        "userSecrets": true
+      }
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "NeoDEEX.Transactions.Performance": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}
