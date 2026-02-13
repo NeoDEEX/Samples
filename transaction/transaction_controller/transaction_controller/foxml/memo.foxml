@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="getall">
+      <text>
+        SELECT * FROM memo_data
+      </text>
+    </statement>
+    <statement id="insert">
+      <text>
+        INSERT INTO memo_data (title, content) OUTPUT inserted.id VALUES (#title#, #content#)
+      </text>
+    </statement>
+  </statements>
+</queryMap>

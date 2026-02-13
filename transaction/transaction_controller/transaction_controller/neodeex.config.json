@@ -1,0 +1,17 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "SqlServer",
+    "connectionStrings": {
+      "SqlServer": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "connectionStrings:LocalSqlServerTestDB",
+        "userSecrets": true
+      },
+      "SqlServer_No_Pooling": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "Data Source=(LocalDB)\\MSSQLLocalDB;Database=TestDB;Integrated Security=True;Pooling=false"
+      }
+    }
+  }
+}

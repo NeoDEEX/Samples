@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/doc/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="transaction_controller/transaction_controller.csproj" />
+</Solution>
