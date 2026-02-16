@@ -1,0 +1,14 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "execution_extension": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxDebugLoggerProvider"
+      },
+      "Console": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}
