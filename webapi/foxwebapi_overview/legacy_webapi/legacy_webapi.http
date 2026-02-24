@@ -1,0 +1,44 @@
+@legacy_webapi_HostAddress = http://localhost:5057
+
+GET {{legacy_webapi_HostAddress}}/api/orders
+Accept: application/json
+
+###
+
+GET {{legacy_webapi_HostAddress}}/api/orders/1
+Accept: application/json
+
+###
+
+
+GET {{legacy_webapi_HostAddress}}/api/orders/1/details
+Accept: application/json
+
+###
+
+POST {{legacy_webapi_HostAddress}}/api/orders/new
+Content-Type: application/json
+
+{
+  "order": {
+    "Customer_Id": "CUST999",
+    "Employee_Id": "EMP999",
+    "Order_Date": "2025-09-09T09:09:09Z",
+    "Shipped_Date": "2025-09-10T10:10:10Z",
+    "Ship_Address": "Addr #999"
+  },
+  "details": [
+    {
+      "Product_Id": "PROD990",
+      "Quantity": 990,
+      "Unit_Price": 9.90
+    },
+    {
+      "Product_Id": "PROD999",
+      "Quantity": 999,
+      "Unit_Price": 9.99
+    }
+  ]
+}
+
+###

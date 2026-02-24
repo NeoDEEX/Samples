@@ -1,0 +1,75 @@
+@neodeex_webapi_HostAddress = http://localhost:5069
+
+POST {{neodeex_webapi_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+Content-Type: application/json
+
+{
+  "queryId": "orders.get_all_orders"
+}
+
+###
+
+POST {{neodeex_webapi_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+Content-Type: application/json
+
+{
+  "queryId": "orders.get_order_by_id",
+  "parameters": {
+    "order_id": 1
+  }
+}
+
+###
+
+POST {{neodeex_webapi_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+Content-Type: application/json
+
+{
+  "queryId": "orders.get_details_by_id",
+  "parameters": {
+    "order_id": 1
+  }
+}
+
+###
+
+POST {{neodeex_webapi_HostAddress}}/api/bizservice/execute
+Accept: application/json
+Content-Type: application/json
+
+{
+  "classId": "OrdersBiz",
+  "methodId": "InsertOrder",
+  "parameters": {
+    "order": {
+      "$type": "commlib.Order, commlib",
+      "value": {
+        "Customer_Id": "CUST999",
+        "Employee_Id": "EMP999",
+        "Order_Date": "2025-09-09T09:09:09Z",
+        "Shipped_Date": "2025-09-10T10:10:10Z",
+        "Ship_Address": "Addr #999"
+      }
+    },
+    "details": {
+      "$type": "commlib.OrderDetail[], commlib",
+      "value": [
+        {
+          "Product_Id": "PROD990",
+          "Quantity": 990,
+          "Unit_Price": 9.90
+        },
+        {
+          "Product_Id": "PROD999",
+          "Quantity": 999,
+          "Unit_Price": 9.99
+        }
+      ]
+    }
+  }
+}
+
+###

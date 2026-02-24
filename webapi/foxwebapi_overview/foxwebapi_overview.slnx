@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/common/">
+    <File Path="common/neodeex.config.json" />
+    <File Path="common/orders.foxml" />
+  </Folder>
+  <Folder Name="/database/">
+    <File Path="database/postgresql.sql" />
+    <File Path="database/sqlserver.sql" />
+  </Folder>
+  <Folder Name="/doc/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="commlib/commlib.csproj" />
+  <Project Path="legacy_webapi/legacy_webapi.csproj" />
+  <Project Path="neodeex_webapi/neodeex_webapi.csproj" Id="9994b98b-42eb-40ac-9e06-906ff409eff2" />
+</Solution>
