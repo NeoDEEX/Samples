@@ -1,0 +1,39 @@
+# 테스트를 위한 HTTP Request 예제들
+@host=localhost:7069
+
+POST https://{{host}}/api/bizservice/execute
+Content-Type: application/json
+
+{
+  "classId": "MinimalWebApi.BizLogic",
+  "methodId": "Hello"
+}
+
+###
+
+POST https://{{host}}/api/dataservice/executeDataSet
+Content-Type: application/json
+
+{
+  "queryId": "Northwind:GetProducts",
+  "parameters": {
+    "productid": 1
+  }
+}
+
+###
+
+POST https://{{host}}/api/northwind/products
+Content-Type: application/json
+
+{
+  "queryId": "Northwind:GetProducts",
+  "parameters": {
+    "productid": 1
+  }
+}
+
+###
+
+GET https://{{host}}/api/products/2
+

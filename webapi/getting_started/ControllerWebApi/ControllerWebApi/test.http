@@ -1,0 +1,40 @@
+@ControllerWebApi_HostAddress = http://localhost:5097
+
+POST {{ControllerWebApi_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+
+{
+  "classId": "BizLogicModule.BizLogic",
+  "methodId": "Echo",
+  "parameters": {
+    "message": "Hello Fox Biz Service World!"
+  }
+}
+
+###
+POST {{ControllerWebApi_HostAddress}}/biz/service/execute
+Content-Type: application/json
+
+{
+  "classId": "BizLogicModule.BizLogic",
+  "methodId": "Echo",
+  "parameters": {
+    "message": "Hello My Biz Service!"
+  }
+}
+
+###
+GET {{ControllerWebApi_HostAddress}}/biz/service/echo?msg=hello
+
+###
+POST {{ControllerWebApi_HostAddress}}/api/dataservice/executeDataSet
+Content-Type: application/json
+
+{
+  "queryId": "Northwind:GetProducts",
+  "parameters": {
+    "productid": 1
+  }
+}
+
+###

@@ -1,0 +1,23 @@
+{
+  "database": {
+    "connectionStrings": {
+      "default": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "SERVER=(LocalDB)\\MSSQLLocalDB;DATABASE=Northwind;Trusted_Connection=True"
+      }
+    }
+  },
+  "bizService": {
+    "modules": [
+      "BizLogicModule"
+    ]
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "NeoDEEX.ServiceModel.Services.Biz.FoxBizService": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}

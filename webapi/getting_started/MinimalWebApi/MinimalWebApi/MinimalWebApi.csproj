@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NeoDEEX.Data.SqlClient" Version="5.0.0-beta.1" />
+    <PackageReference Include="NeoDEEX.ServiceModel.WebApi" Version="5.0.0-beta.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Foxml\Northwind.foxml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

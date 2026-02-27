@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="GetProducts">
+      <text>
+        SELECT * FROM Products WHERE ProductID = #productid#
+      </text>
+      <parameters>
+        <parameter name="productid"/>
+      </parameters>
+    </statement>
+  </statements>  
+</queryMap>
