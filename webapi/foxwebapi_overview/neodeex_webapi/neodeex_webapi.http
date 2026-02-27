@@ -1,4 +1,45 @@
+# HTTP requests for testing NeoDEEX Fox Biz/Data Service Web API
+
 @neodeex_webapi_HostAddress = http://localhost:5069
+
+GET {{neodeex_webapi_HostAddress}}/orders
+Accept: application/json
+
+###
+
+
+GET {{neodeex_webapi_HostAddress}}/orders/28
+Accept: application/json
+
+###
+
+POST {{neodeex_webapi_HostAddress}}/orders/new
+Accept: application/json
+Content-Type: application/json
+
+{
+  "order": {
+    "Customer_Id": "CUST999",
+    "Employee_Id": "EMP999",
+    "Order_Date": "2025-09-09T09:09:09Z",
+    "Shipped_Date": "2025-09-10T10:10:10Z",
+    "Ship_Address": "Addr #999"
+  },
+  "details": [
+    {
+      "Product_Id": "PROD990",
+      "Quantity": 990,
+      "Unit_Price": 9.90
+    },
+    {
+      "Product_Id": "PROD999",
+      "Quantity": 999,
+      "Unit_Price": 9.99
+    }
+  ]
+}
+
+###
 
 POST {{neodeex_webapi_HostAddress}}/api/dataservice/executedataset
 Accept: application/json
@@ -17,7 +58,7 @@ Content-Type: application/json
 {
   "queryId": "orders.get_order_by_id",
   "parameters": {
-    "order_id": 1
+    "order_id": 26
   }
 }
 
