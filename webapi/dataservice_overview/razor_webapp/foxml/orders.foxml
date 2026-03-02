@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="get_all_orders">
+      <text>
+        SELECT * FROM t_orders
+      </text>
+    </statement>
+    <statement id="get_order_by_id">
+      <text>
+        SELECT * FROM t_orders WHERE order_id = #order_id#
+      </text>
+    </statement>
+    <statement id="get_details_by_id">
+      <text>
+        SELECT * FROM t_order_details WHERE order_id = #order_id#
+      </text>
+    </statement>
+    <statement id="insert_order">
+      <text>
+        INSERT INTO t_orders (customer_id, employee_id, order_date, shipped_date, ship_address)
+        VALUES (#customer_id#, #employee_id#, #order_date#, #shipped_date#, #ship_address#)
+        -- SELECT SCOPE_IDENTITY() AS order_id;
+        RETURNING order_id
+      </text>
+    </statement>
+    <statement id="insert_detail">
+      <text>
+        INSERT INTO t_order_details (order_id, product_id, quantity, unit_price)
+        VALUES (#order_id#, #product_id#, #quantity#, #unit_price#)
+      </text>
+    </statement>
+    <statement id="get_all_orders_with_details">
+      <text>
+        SELECT m.order_id, m.customer_id, m.order_date, d.product_id, d.quantity, d.unit_price
+        FROM t_orders m left join t_order_details d on m.order_id = d.order_id
+      </text>
+    </statement>
+    <statement id="get_order_by_id_with_details">
+      <text>
+        SELECT m.order_id, m.customer_id, m.order_date, d.product_id, d.quantity, d.unit_price
+        FROM t_orders m left join t_order_details d on m.order_id = d.order_id
+        WHERE m.order_id = #order_id#
+      </text>
+    </statement>
+  </statements>
+</queryMap>

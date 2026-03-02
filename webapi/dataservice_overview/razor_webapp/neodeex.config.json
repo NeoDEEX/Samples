@@ -1,0 +1,30 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "connectionStrings": {
+      "DefaultConnection": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true
+      }
+    }
+  },
+  "webapiServer": {
+    "useTypeInfo": false,
+    "returnServerInfo": false
+  },
+  "bizService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "BizService"
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "BizService": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}
