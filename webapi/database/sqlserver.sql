@@ -2,6 +2,15 @@
 -- SQL Server Database Script
 --
 
+DROP TABLE IF EXISTS t_products;
+
+CREATE TABLE t_products
+(
+	product_id VARCHAR(16) PRIMARY KEY,
+	product_name VARCHAR(64) NOT NULL,
+	unit_price DECIMAL(18, 2) NOT NULL
+);
+
 DROP TABLE IF EXISTS t_orders;
 
 CREATE TABLE t_orders
@@ -23,6 +32,13 @@ CREATE TABLE t_order_details
 	quantity INT NOT NULL,
 	unit_price DECIMAL(18, 2) NOT NULL
 );
+
+INSERT INTO t_products (product_id, product_name, unit_price)
+VALUES ('PROD001', 'Product 1', 1.1),
+	   ('PROD002', 'Product 2', 11.11),
+	   ('PROD003', 'Product 3', 3.3),
+	   ('PROD004', 'Product 4', 4.4),
+	   ('PROD005', 'Product 5', 5.5);
 
 INSERT INTO t_orders (customer_id, employee_id, order_date, shipped_date, ship_address)
 VALUES ('CUST001', 'EMP001', '2023-01-01', '2023-01-05', 'Addr #1'),

@@ -3,10 +3,6 @@
     <File Path="common/neodeex.config.json" />
     <File Path="common/orders.foxml" />
   </Folder>
-  <Folder Name="/database/">
-    <File Path="database/postgresql.sql" />
-    <File Path="database/sqlserver.sql" />
-  </Folder>
   <Folder Name="/doc/">
     <File Path="README.md" />
   </Folder>
