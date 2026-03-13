@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Database/">
+    <File Path="DBScript.sql" />
+  </Folder>
+  <Project Path="SampleClientApp/SampleClientApp.csproj" Id="d44356f2-91f4-45d8-9ac2-92fad1f914f1" />
+  <Project Path="SampleWebApp/SampleWebApp.csproj" Id="03f774e2-d654-4241-b152-9f55936c5159" />
+</Solution>

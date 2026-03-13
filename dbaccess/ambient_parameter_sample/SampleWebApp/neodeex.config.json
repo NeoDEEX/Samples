@@ -1,0 +1,11 @@
+﻿{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "connectionStrings": {
+      "LocalDB": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "Data Source=(LocalDB)\\MSSQLLocalDB;Database=SampleDB;Integrated Security=True"
+      }
+    }
+  }
+}

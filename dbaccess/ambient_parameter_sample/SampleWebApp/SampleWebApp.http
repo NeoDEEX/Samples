@@ -1,0 +1,19 @@
+@SampleWebApp_HostAddress = http://localhost:5174
+
+POST {{SampleWebApp_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+Content-Type: application/json
+{
+  "queryId": "common.GetProducts"
+}
+
+###
+
+POST {{SampleWebApp_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+Content-Type: application/json
+{
+  "queryId": "common.GetRawData"
+}
+
+###
