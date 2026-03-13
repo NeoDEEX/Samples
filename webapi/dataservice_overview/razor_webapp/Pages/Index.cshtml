@@ -7,8 +7,16 @@
 @{
     ViewData["Title"] = "Home page";
 
-    FoxDataRequest dataRequest = new("orders.get_all_orders_with_details");
-    FoxDataService dataService = new();
+    FoxDataService dataService = new()
+    {
+        EnablePerfLog = true,
+        PerfLoggerName = "DataService"
+    };
+
+    FoxDataRequest dataRequest = new("orders.get_all_orders_with_details")
+    {
+        Diagnostics = FoxDataRequestDiagnostics.DbProfileInfo
+    };
     FoxDataResponse dataResponse = dataService.ExecuteDataSet(dataRequest);
     DataTable ordersTable = dataResponse.DataSet.Tables[0];
     int rowCount = ordersTable.Rows.Count;
@@ -56,6 +64,59 @@
             }
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+
+@{
+    //
+    // 다중 쿼리 예제 입니다.
+    //
+    // 주) 이 예제의 쿼리는 굳이 다중 쿼리를 사용할 필요 없이 단일 쿼리로도 구현이 가능하며
+    //     오히려 단일 쿼리로 구현해야 성능이나 효율에 좋습니다. 다중 쿼리의 예를 보이기 위한
+    //     예제임을 감안해 주십시요.
+    FoxDataRequestCollection requests = new("")
+    {
+        new FoxDataRequest("orders.get_order_by_id") { Operation = FoxDataOperations.ExecuteDataSet },
+        new FoxDataRequest("orders.get_details_by_id") { Operation = FoxDataOperations.ExecuteDataSet},
+    };
+    requests[0].Parameters["order_id"] = 1;
+    requests[1].Parameters["order_id"] = 1;
+    FoxDataResponseCollection responses = dataService.ExecuteMultiple(requests);
+    DataRow orderRow = responses[0].DataSet.Tables[0].Rows[0];
+    DataTable detailsTable = responses[1].DataSet.Tables[0];
+}
+<div class="card">
+  <div class="card-header">
+    Order Information
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="card-title">Order ID: @orderRow["order_id"]</p>
+          <p class="card-text">Customer ID: @orderRow["customer_id"]</p>
+          <p class="card-text">Employee ID: @orderRow["employee_id"]</p>
+          <p class="card-text">Order Date: @orderRow["order_date"]</p>
+          <p class="card-text">Ship Date: @orderRow["shipped_date"]</p>
+          <p class="card-text">Ship Address: @orderRow["ship_address"]</p>
+        </div>
+        <div class="col">
+          @foreach (DataRow row in detailsTable.Rows)
+          {
+            <div class="card">
+              <div class="card-header">
+                Order Detail - Product ID: @row["product_id"]
+              </div>
+              <div class="card-body">
+                Quantity: @row["quantity"]<br/>
+                Unit Price: @row["unit_price"]
+              </div>
+            </div>
+          }
+        </div>
       </div>
     </div>
   </div>

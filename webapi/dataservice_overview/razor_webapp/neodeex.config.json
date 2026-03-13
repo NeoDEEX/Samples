@@ -13,16 +13,16 @@
     "useTypeInfo": false,
     "returnServerInfo": false
   },
-  "bizService": {
+  "dataService": {
     "diagnostics": {
       "enable": true,
-      "loggerName": "BizService"
+      "loggerName": "DataService"
     }
   },
   "logging": {
     "filter": "Verbose",
     "loggers": {
-      "BizService": {
+      "DataService": {
         "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
       }
     }

@@ -9,6 +9,9 @@
 </PropertyGroup>
 
   <ItemGroup>
+    <None Update="foxml\products.foxml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="foxml\orders.foxml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

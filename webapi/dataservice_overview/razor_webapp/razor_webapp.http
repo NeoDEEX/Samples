@@ -1,0 +1,54 @@
+# Web API 테스트를 위한 HTTP 파일
+@server = https://localhost:7278
+
+POST {{server}}/api/dataservice/executedataset
+ACCEPT: application/json
+CONTENT: application/json
+
+{
+  "queryId": "products.get_all"
+}
+
+###
+
+POST {{server}}/api/dataservice/executenonquery
+ACCEPT: application/json
+CONTENT: application/json
+
+{
+  "queryId": "products.test_setup"
+}
+
+###
+
+POST {{server}}/api/dataservice/savedatatable
+ACCEPT: application/json
+CONTENT: application/json
+{
+  "databaseName": "",
+  "queryId": "products.get_all",
+  "transaction": "Local",
+  "insertQueryId": "products.insert",
+  "updateQueryId": "products.update",
+  "deleteQueryId": "products.delete",
+  "dataSet": {
+    "Table": [
+      { 
+        "product_id": "PROD100",
+        "product_name": "Test_Product",
+        "unit_price": 9999.99,
+        "$rowState": "Modified"
+      },
+      { 
+        "product_id": "PROD101",
+        "$rowState": "Deleted"
+      },
+      { 
+        "product_id": "PROD102",
+        "product_name": "Test_Product",
+        "unit_price": 9.99,
+        "$rowState": "Added"
+      }
+    ]
+  }
+}
