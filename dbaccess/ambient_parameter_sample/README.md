@@ -1,6 +1,6 @@
 # Ambient Value Parameter Sample
 
-Fox Query의 [환경 값 매개변수(Ambient Value Paramter)](https://github.com/NeoDEEX/manual/tree/master/data/foxquery/ambient.md)에 대한 예제 코드 입니다.
+Fox Query의 [환경 값 매개변수(Ambient Value Paramter)](https://neodeex.github.io/doc/dbaccess/foxquery/ambient.md)에 대한 예제 코드 입니다.
 
 이 예제 코드는 다음과 같은 데이터베이스 테이블을 수정하는데 필요한 환경 값 매개변수 사용 방법을 보여 줍니다.
 
@@ -41,6 +41,6 @@ create table Product (
 </statement>
 ```
 
-환경 값 매개변수는 [Fox Data Service](/webservice/dataservice/README.md)의 `SaveDataTable` 메서드를 사용하여 간단한 데이터 변경 프로그램을 작성할 때 유용하게 사용될 수 있습니다. 이 예제는 이러한 시나리오를 예제로서 보여줍니다. 환경 값 매개변수의 상세한 설명과 사용 시나리오에 대해서는 [관련 문서](https://github.com/NeoDEEX/manual/tree/master/data/foxquery/ambient.md)를 참고 하십시오.
+환경 값 매개변수는 [Fox Data Service](https://neodeex.github.io/doc/webapi/dataservice/overview.md)의 `SaveDataTable` 메서드를 사용하여 간단한 데이터 변경 프로그램을 작성할 때 유용하게 사용될 수 있습니다. 이 예제는 이러한 시나리오를 예제로서 보여줍니다. 환경 값 매개변수의 상세한 설명과 사용 시나리오에 대해서는 [관련 문서](https://neodeex.github.io/doc/dbaccess/foxquery/ambient.md)를 참고 하십시오.
 
 ---
