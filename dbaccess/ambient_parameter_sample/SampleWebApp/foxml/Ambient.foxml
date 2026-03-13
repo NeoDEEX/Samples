@@ -19,7 +19,7 @@
     </statement>
     <statement id="WriteServerLog">
       <text>
-        INSERT INTO ServerLog(Host, IP, Process, Message) VALUES(@Host, @Ip, @ProcessName, @Message)
+        INSERT INTO Sample_ServerLog(Host, IP, Process, Message) VALUES(@Host, @Ip, @ProcessName, @Message)
       </text>
       <parameters>
         <parameter name="Host" property="Env.Host" ambient="true"/>

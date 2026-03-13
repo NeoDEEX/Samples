@@ -1,4 +1,6 @@
+using NeoDEEX.Data;
 using NeoDEEX.ServiceModel.WebApi;
+using ServerLib;
 
 namespace SampleWebApp;
 
@@ -12,6 +14,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddAuthorization();
+
+        // Register custom ambient value source
+        FoxAmbientValueManager.AddValueSource("Env", new CustomValueSource());
 
         var app = builder.Build();
 

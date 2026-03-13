@@ -22,8 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="app_data\" />
     <Folder Include="foxml\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServerLib\ServerLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
