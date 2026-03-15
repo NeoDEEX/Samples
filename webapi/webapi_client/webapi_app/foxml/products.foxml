@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="get_all">
+      <text>
+        SELECT * FROM t_products
+      </text>
+    </statement>
+    <statement id="insert">
+      <text>
+        INSERT INTO t_products(product_id, product_name, unit_price)
+        VALUES (#product_id#, #product_name#, #unit_price#)
+      </text>
+    </statement>
+    <statement id="update">
+      <text>
+        UPDATE t_products
+        SET product_name = #product_name#, unit_price = #unit_price#
+        WHERE product_id = #product_id#
+      </text>
+    </statement>
+    <statement id="delete">
+      <text>
+        DELETE FROM t_products
+        WHERE product_id = #product_id#
+      </text>
+    </statement>
+    <statement id="test_setup">
+      <text>
+        DELETE FROM t_products WHERE product_name = 'Test_Product';
+        INSERT INTO t_products(product_id, product_name, unit_price)
+        VALUES  ('PROD100', 'Test_Product', 0),
+                ('PROD101', 'Test_Product', 0);
+      </text>
+    </statement>
+  </statements>
+</queryMap>

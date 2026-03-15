@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="adv_client/adv_client.csproj" Id="eaec4689-8116-43e1-9e25-c11ba5271fbf" />
+  <Project Path="desktop_client/desktop_client.csproj" />
+  <Project Path="webapi_app/webapi_app.csproj" Id="69eabd8c-919d-42a2-b1e2-2cbb1be04691" />
+</Solution>
