@@ -11,7 +11,7 @@
   },
   "webapiServer": {
     "useTypeInfo": false,
-    "returnServerInfo": false
+    "returnServerInfo": true,
   },
   "dataService": {
     "diagnostics": {
@@ -24,6 +24,9 @@
     "loggers": {
       "DataService": {
         "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "MyLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxDebugLoggerProvider"
       }
     }
   }

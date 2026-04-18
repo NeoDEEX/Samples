@@ -52,3 +52,27 @@ CONTENT: application/json
     ]
   }
 }
+
+###
+
+POST {{server}}/api/dataservice/executemultiple
+ACCEPT: application/json
+CONTENT: application/json
+{
+  "items": [
+    {
+      "operation": "ExecuteDataSet",
+      "queryId": "orders.get_order_by_id",
+      "parameters": {
+        "order_id": 1
+      }
+    },
+    {
+      "operation": "ExecuteDataSet",
+      "queryId": "orders.get_details_by_id",
+      "parameters": {
+        "order_id": 1
+      }
+    }
+  ]
+}
