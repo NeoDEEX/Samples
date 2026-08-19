@@ -33,6 +33,14 @@ CREATE TABLE t_order_details
 	unit_price DECIMAL(18, 2) NOT NULL
 );
 
+DROP TABLE IF EXISTS txtesttable;
+
+CREATE TABLE IF NOT EXISTS txtesttable (
+	pk		int NOT NULL PRIMARY KEY,
+	col1	int	NULL,
+	col2	varchar(64) NULL
+);
+
 
 INSERT INTO t_products (product_id, product_name, unit_price)
 VALUES ('PROD001', 'Product 1', 1.1),
