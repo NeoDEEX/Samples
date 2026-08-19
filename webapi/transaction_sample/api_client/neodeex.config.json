@@ -1,0 +1,8 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "webapiClient": {
+    "urls": {
+      "default": "http://localhost:5072/api/dataservice"
+    }
+  }
+}

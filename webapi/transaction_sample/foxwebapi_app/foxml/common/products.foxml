@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="get_test_data">
+      <text>
+        <![CDATA[
+        SELECT * FROM t_products WHERE product_id >= 'PROD990' AND product_id <= 'PROD999'
+        ]]>
+      </text>
+    </statement>
+    <statement id="insert">
+      <text>
+        INSERT INTO t_products(product_id, product_name, unit_price)
+        VALUES ('PROD999', #product_name#, #unit_price#)
+      </text>
+    </statement>
+    <statement id="update">
+      <text>
+        UPDATE t_products
+        SET product_name = #product_name#, unit_price = #unit_price#
+        WHERE product_id = 'PROD999'
+      </text>
+    </statement>
+    <statement id="delete">
+      <text>
+        DELETE FROM t_products WHERE product_id = 'PROD999'
+      </text>
+    </statement>
+    <statement id="setup_test_data">
+      <text>
+        <![CDATA[
+        DELETE FROM t_products WHERE product_id >= 'PROD990' AND product_id <= 'PROD999';
+        INSERT INTO t_products(product_id, product_name, unit_price)
+        VALUES('PROD990', 'Test Product 990', 9.90),
+              ('PROD991', 'Test Product 991', 9.91);
+        ]]>
+      </text>
+    </statement>
+  </statements>
+</queryMap>

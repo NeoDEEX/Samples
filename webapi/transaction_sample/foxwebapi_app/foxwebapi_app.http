@@ -1,0 +1,28 @@
+@foxwebapi_app_HostAddress = http://localhost:5072
+
+# 디폴트 DB(Azure PostgreSQL) 호출 예제
+POST {{foxwebapi_app_HostAddress}}/api/dataservice/executedataset
+Content-Type: application/json
+{
+  "queryId": "products.get_test_data"
+}
+###
+
+# SQL Server 호출 예제
+POST {{foxwebapi_app_HostAddress}}/api/dataservice/executedataset
+Content-Type: application/json
+{
+  "databaseName": "SqlServer",
+  "queryId": "testtable.get_test_data"
+}
+###
+
+# Oracle Cloud PostgreSQL 호출 예제
+POST {{foxwebapi_app_HostAddress}}/api/dataservice/executedataset
+Content-Type: application/json
+{
+  "databaseName": "OciPostgreSQL",
+  "queryId": "products.get_test_data"
+}
+###
+

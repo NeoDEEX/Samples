@@ -1,0 +1,52 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "AzurePostgreSQL",
+    "connectionStrings": {
+      "AzurePostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true,
+        "queryMapper": "PostgreSQL"
+      },
+      "SqlServer": {
+        "type": "NeoDEEX.Data.SqlClient.FoxSqlDbAccess",
+        "connectionString": "connectionStrings:LocalSqlServerTestDB",
+        "userSecrets": true,
+        "queryMapper": "SqlServer"
+      },
+      "OciPostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:OciPostgreSQL",
+        "userSecrets": true,
+        "queryMapper": "PostgreSQL"
+      }
+    },
+    "queryMappers": {
+      "PostgreSQL": {
+        "directories": [ "./foxml/postgresql", "./foxml/common" ]
+      },
+      "SqlServer": {
+        "directories": [ "./foxml/sqlserver", "./foxml/common" ]
+      }
+    }
+  },
+  "webapiServer": {
+    "useTypeInfo": false,
+    "returnServerInfo": true
+  },
+  "dataService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "DataService"
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "DataService": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}
