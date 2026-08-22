@@ -15,7 +15,7 @@ internal class Program
 
         bool useSqlServer = false;
         bool isLocalTx = true;
-        bool forceRollback = false;
+        bool forceRollback = true;
 
         if (await TestSetup(useSqlServer) == false)
         {
@@ -34,6 +34,7 @@ internal class Program
         }
         await GetProducts(db1);
         await GetTestTable(db2);
+        AnsiConsole.WriteLine();
         await UpdateData(db1, db2, forceRollback);
         AnsiConsole.WriteLine();
         await GetProducts(db1);
@@ -165,6 +166,9 @@ internal class Program
         {
             requests.Transaction = FoxDataTransactions.Distributed;
         }
+        // 트랜잭션 타임아웃 및 격리 수준 설정 (옵션)
+        requests.TransactionTimeout = 30;
+        requests.TransactionIsolation = FoxDataTransactionIsolations.Serializable;
         return await DoUpdate(requests, forceRollback);
     }
 

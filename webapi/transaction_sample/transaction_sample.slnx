@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="api_client/api_client.csproj" Id="5840f98d-89d3-448c-8048-4a555e7cf5dc" />
   <Project Path="foxwebapi_app/foxwebapi_app.csproj" />
 </Solution>
