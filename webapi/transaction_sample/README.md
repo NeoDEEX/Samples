@@ -44,7 +44,7 @@ bool forceRollback = true;
 
 닷넷 환경에서 분산 트랜잭션은 MSDTC 라는 복잡한 환경 설정을 요구합니다. 예를 들어, 원격 호스트에 존재하는 SQL Server 데이터베이스를 대상으로 분산 트랜잭션을 수행하기 위해서는 SQL Server 호스트 측의 MSDTC(Microsoft Distributed Transaction Coordinator) 서비스가 활성화되어 있어야 하며 RPC 통신이 가능해야 합니다. MSDTC 서비스가 활성화와 RPC 통신은 복잡한 네트워크 설정을 요구합니다(Fox Data Service 와 동일한 서버에 존재하는 SQL Server 에 대한 분산 트랜잭션은 별다른 설정을 요구하지 않습니다).
 
-한편, Oracle 데이터베이스를 대상으로 분산 트랜잭션을 수행하기 위해서는 Fox Data Service 호스트 상에 Managed ODP.NET 에서 MTS(Microsoft Transaction Server) 기능을 설정해야만 정상적인 분산 트랜잭션이 가능합니다.
+한편, Oracle 데이터베이스를 대상으로 분산 트랜잭션을 수행하기 위해서는 ODP.NET Core 23.9 이상 버전이 필요하며, 분산 트랜잭션에서 격리 수준으로 Read Committed 만을 지원합니다.
 
 이 테스트에서 PostgreSQL 데이터베이스를 사용한 이유는 PostgreSQL 데이터베이스는 MSDTC 서비스나 MTS 기능을 요구하지 않기 때문입니다. 따라서 PostgreSQL 데이터베이스를 대상으로 분산 트랜잭션을 수행하는 것이 가장 간단합니다. 하지만 PostgreSQL 데이터베이스는 MSDTC 를 위한 완전한 2PC(Two-Phase Commit) 분산 트랜잭션을 지원하지 않으므로 트랜잭션 도중에 서버가 종료되는 등으로 트랜잭션이 커밋되거나 롤백되지 않고 고아(orphan) 상태가 될 수 있습니다. 따라서 PostgreSQL 데이터베이스를 대상으로 분산 트랜잭션을 수행할 때는 이러한 점을 고려해야 합니다.
 
