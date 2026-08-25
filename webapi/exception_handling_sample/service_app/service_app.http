@@ -1,0 +1,14 @@
+@service_app_HostAddress = http://localhost:5263
+
+# 서버 측에서 예외 처리 테스트
+Get {{service_app_HostAddress}}/api/product/P001
+
+###
+POST {{service_app_HostAddress}}/api/dataservice/executedataset
+Content-Type: application/json
+{
+  "queryId": "sample.get_all_products"
+}
+###
+
+

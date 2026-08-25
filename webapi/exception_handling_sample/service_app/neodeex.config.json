@@ -1,0 +1,30 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "LocalSqlite",
+    "connectionStrings": {
+      "LocalSqlite": {
+        "type": "NeoDEEX.Data.SqliteClient.FoxSqliteDbAccess",
+        "connectionString": "data source=./db/database.db"
+      }
+    }
+  },
+  "webapiServer": {
+    "useTypeInfo": false,
+    "returnServerInfo": true
+  },
+  "dataService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "DataService"
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "DataService": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      }
+    }
+  }
+}
