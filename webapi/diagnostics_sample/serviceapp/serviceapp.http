@@ -1,0 +1,10 @@
+@serviceapp_HostAddress = http://localhost:5146
+
+POST {{serviceapp_HostAddress}}/api/dataservice/executedataset
+Content-Type: application/json
+
+{
+  "queryId": "sample.get_all_products",
+  "diagnostics": "LogId, ServiceLog, DbProfileInfo"
+}
+###

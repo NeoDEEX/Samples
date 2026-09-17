@@ -1,0 +1,9 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "webapiClient": {
+    "defaultUrlName": "default",
+    "urls": {
+      "default": "http://localhost:5146"
+    }
+  }
+}
