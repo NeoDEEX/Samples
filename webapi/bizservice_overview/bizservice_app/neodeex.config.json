@@ -1,0 +1,62 @@
+{
+  "$schema": "https://neodeex.github.io/doc/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "PostgreSQL",
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true
+      }
+    }
+  },
+  "webapiServer": {
+    "useTypeInfo": false,
+    "returnServerInfo": true
+  },
+  "bizService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "ConsoleLogger"
+    },
+    "modules": [ "BizLib1" ]
+  },
+  "dataService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "ConsoleLogger",
+      "detailedDbProfile": false
+    },
+    "perfLog": {
+      "enable": true,
+      "loggerName": "PerfLogger"
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "bizservice_app": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "ConsoleLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "FileLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "filePrefix": "dataservice",
+          "directory": "logs",
+          "creation": "Daily"
+        }
+      },
+      "PerfLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "filePrefix": "dataservice_perf",
+          "directory": "logs",
+          "creation": "Daily"
+        }
+      }
+    }
+  }
+}

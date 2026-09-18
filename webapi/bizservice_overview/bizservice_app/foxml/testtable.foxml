@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="get_test_data">
+      <text>
+        <![CDATA[
+        SELECT * FROM txtesttable WHERE PK >= 990 AND PK <=999
+        ]]>
+      </text>
+    </statement>
+    <statement id="insert">
+      <text>
+        INSERT INTO TxTestTable(PK, COL1, COL2) VALUES(999, #col1#, #col2#)
+      </text>
+    </statement>
+    <statement id="update">
+      <text>
+        UPDATE TxTestTable
+        SET COL1 = #col1#, COL2 = #col2#
+        WHERE PK = 999
+      </text>
+    </statement>
+    <statement id="delete">
+      <text>
+        DELETE FROM TxTestTable
+        WHERE PK = 999
+      </text>
+    </statement>
+    <statement id="setup_test_data">
+      <text>
+        <![CDATA[
+        DELETE FROM TxTestTable WHERE PK >= 990 AND PK <=999;
+        INSERT INTO TxTestTable(PK, COL1, COL2)
+          VALUES(990, 0, 'Test Data #990'),
+                (991, 1, 'Test Data #991');
+        ]]>
+      </text>
+    </statement>
+  </statements>
+</queryMap>

@@ -1,0 +1,32 @@
+@bizservice_app_HostAddress = http://localhost:5068
+
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizSample.MyBizLogic",
+  "methodId": "Echo",
+  "parameters": {
+    "message": "Hello, Fox Biz Service World!"
+  }
+}
+
+###
+
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib1.TxBizLogic",
+  "methodId": "GetTestData",
+  "parameters": {}
+}
+###
+
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib1.TxBizLogic",
+  "methodId": "InsertTxData",
+  "parameters": {
+    "data": "Sample data from BizService"
+  }
+}

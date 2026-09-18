@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="bizclient_app/bizclient_app.csproj" />
+  <Project Path="BizLib1/BizLib1.csproj" Id="aa8e172e-07f9-4cd0-bfb6-a3faa161a3f8" />
+  <Project Path="bizservice_app/bizservice_app.csproj" />
+</Solution>
