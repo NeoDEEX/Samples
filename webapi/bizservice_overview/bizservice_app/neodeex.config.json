@@ -6,6 +6,10 @@
       "PostgreSQL": {
         "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
         "connectionString": "connectionStrings:PostgreSQL",
+        "dbProfile": {
+          "enable": true,
+          "loggerName": "ConsoleLogger"
+        },
         "userSecrets": true
       }
     }
@@ -19,7 +23,23 @@
       "enable": true,
       "loggerName": "ConsoleLogger"
     },
-    "modules": [ "BizLib1" ]
+    "perfLog": {
+      "enable": true,
+      "loggerName": "PerfLogger"
+    },
+    "modules": [ "BizLib1", "BizLib2.dll", "./legacy_biz/*.dll" ],
+    "throwOnError": true,
+    "useLoadContext": true,
+    "isCollectible": false,
+    "supportJsonType": false,
+    "moduleGroups": {
+      "group1": {
+        "directory": "./modules",
+        "pattern": "*.dll",
+        "useLoadContext": true,
+        "isCollectible": false
+      }
+    }
   },
   "dataService": {
     "diagnostics": {
@@ -44,7 +64,7 @@
       "FileLogger": {
         "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
         "properties": {
-          "filePrefix": "dataservice",
+          "filePrefix": "bizservice",
           "directory": "logs",
           "creation": "Daily"
         }
@@ -52,7 +72,7 @@
       "PerfLogger": {
         "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
         "properties": {
-          "filePrefix": "dataservice_perf",
+          "filePrefix": "bizservice_perf",
           "directory": "logs",
           "creation": "Daily"
         }

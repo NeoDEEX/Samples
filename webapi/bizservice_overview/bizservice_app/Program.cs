@@ -1,6 +1,8 @@
 using BizLib1;
 using NeoDEEX.Data;
 using NeoDEEX.Diagnostics;
+using NeoDEEX.ServiceModel.Biz;
+using NeoDEEX.ServiceModel.Services.Biz;
 using NeoDEEX.ServiceModel.WebApi;
 
 namespace bizservice_app;
@@ -27,6 +29,17 @@ public class Program
         app.UseHttpsRedirection();
         app.UseAuthorization();
 
+        // FoxBizService 직접 호출 예제.
+        // 물론 이런 상황이라면 직접 BizLogic2 클래스의 GetProduct 메서드 호출이 더 효율적이다.
+        app.MapGet("/api/product/{id}", (int id) =>
+        {
+            FoxBizService service = new();
+            FoxBizRequest request = new("BizLib2.BizLogic2", "GetProduct");
+            request["id"] = id;
+            FoxBizResponse response = service.Execute(request);
+            return response.Result;
+        });
+
         // Fox Biz Service Help Page(html) 엔드 포인트
         app.MapGet("/api/bizservice/{action}", (string? action, HttpRequest request) =>
         {
@@ -36,6 +49,15 @@ public class Program
         app.MapPost("/api/bizservice/{action}", (string? action, HttpRequest request) =>
         {
             return request.DispatchBizService(action);
+        });
+
+        FoxBizServiceDispatchOptions bizOptions = new()
+        {
+            UseTypeInfo = true
+        };
+        app.MapPost("/api/typed/bizservice/{action}", (string? action, HttpRequest request) =>
+        {
+            return request.DispatchBizService(action, bizOptions);
         });
 
         app.Run();

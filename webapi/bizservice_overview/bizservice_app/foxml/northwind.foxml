@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queryMap xmlns="http://schema.neodeex.net/fx/foxml/2023/04/">
+  <statements>
+    <statement id="search_by_name">
+      <text>
+        SELECT * FROM products WHERE product_name like #keyword#
+      </text>
+    </statement>
+    <statement id="get_product">
+      <text>
+        SELECT * FROM products WHERE product_id = #product_id#
+      </text>
+    </statement>
+  </statements>
+</queryMap>

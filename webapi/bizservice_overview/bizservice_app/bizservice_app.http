@@ -1,5 +1,6 @@
 @bizservice_app_HostAddress = http://localhost:5068
 
+# smoke 테스트
 POST {{bizservice_app_HostAddress}}/api/bizservice/execute
 Content-Type: application/json
 {
@@ -9,9 +10,9 @@ Content-Type: application/json
     "message": "Hello, Fox Biz Service World!"
   }
 }
-
 ###
 
+# 테스트 데이터 확인
 POST {{bizservice_app_HostAddress}}/api/bizservice/execute
 Content-Type: application/json
 {
@@ -21,6 +22,16 @@ Content-Type: application/json
 }
 ###
 
+# 테스트 데이터 셋업
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib1.TxBizLogic",
+  "methodId": "InitTestData"
+}
+###
+
+# 트랜잭션 테스트
 POST {{bizservice_app_HostAddress}}/api/bizservice/execute
 Content-Type: application/json
 {
@@ -30,3 +41,63 @@ Content-Type: application/json
     "data": "Sample data from BizService"
   }
 }
+###
+
+# 제품 검색 테스트
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib2.BizLogic2",
+  "methodId": "SearchProduct",
+  "parameters": {
+    "name": "Chef"
+  }
+}
+###
+
+# ASP.NET Web API 테스트
+GET {{bizservice_app_HostAddress}}/api/product/66
+
+###
+
+# 매개변수 바인딩 테스트 #1, #2
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib3.BizLogic3",
+  "methodId": "ParamBinding1",
+  "parameters": {
+    "param1" : "value1",
+    "param2": {
+      "$type": "decimal",
+      "value": 2.22
+    }
+  }
+}
+###
+
+# 매개변수 바인딩 테스트 #3
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib3.BizLogic3",
+  "methodId": "ParamBinding3",
+  "parameters": {
+    "param1" : "value1",
+    "param2": 2.22
+  },
+  "clientInfo": {
+    "machineName": "localhost",
+    "ip": "127.0.0.1"
+  }
+}
+###
+
+# 리턴값 바인딩 테스트
+POST {{bizservice_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLib3.BizLogic3",
+  "methodId": "ReturnBinding"
+}
+###

@@ -1,0 +1,4 @@
+# 비즈 모듈 제외
+
+modules/*.dll
+legacy_biz/*.dll

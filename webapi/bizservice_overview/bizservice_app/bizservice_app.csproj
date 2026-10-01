@@ -14,10 +14,20 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BizLib1\BizLib1.csproj" />
+    <ProjectReference Include="..\BizLib2\BizLib2.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="foxml\northwind.foxml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="foxml\testtable.foxml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="legacy_biz\Placeholder.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="modules\Placeholder.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

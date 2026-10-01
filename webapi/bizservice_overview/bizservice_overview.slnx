@@ -1,5 +1,10 @@
 <Solution>
+  <Folder Name="/doc/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="bizclient_app/bizclient_app.csproj" />
   <Project Path="BizLib1/BizLib1.csproj" Id="aa8e172e-07f9-4cd0-bfb6-a3faa161a3f8" />
+  <Project Path="BizLib2/BizLib2.csproj" Id="e3e65b76-84f5-4446-82cf-68cb8e5b4568" />
+  <Project Path="BizLib3/BizLib3.csproj" Id="4d2e86b1-6eb1-46ec-adb0-3ba9f8eb21d3" />
   <Project Path="bizservice_app/bizservice_app.csproj" />
 </Solution>
