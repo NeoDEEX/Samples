@@ -11,4 +11,14 @@ Content-Type: application/json
 }
 ###
 
+POST {{service_app_HostAddress}}/api/bizservice/execute
+Content-Type: application/json
+{
+  "classId": "BizLogic",
+  "methodId": "ErrorMethod",
+  "parameters": {
+    "input": "Hello World!"
+  }
+}
+###
 

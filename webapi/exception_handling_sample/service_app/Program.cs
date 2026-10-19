@@ -28,6 +28,8 @@ namespace service_app
             builder.Services.AddAuthorization();
 
             var app = builder.Build();
+            // Fox Biz Service 초기화
+            app.ConfigureBizService();
             // Configure the HTTP request pipeline.
             app.UseHttpsRedirection();
             app.UseAuthorization();
@@ -65,6 +67,17 @@ namespace service_app
             app.MapPost("/api/dataservice/{action}", (string? action, HttpRequest request) =>
             {
                 return request.DispatchDataService(action);
+            });
+
+            // Fox Biz Service Help Page(html) 엔드 포인트
+            app.MapGet("/api/bizservice/{action}", (string? action, HttpRequest request) =>
+            {
+                return request.DispatchBizServiceHelpPage(action);
+            });
+            // Fox Biz Service Web API 엔드 포인트
+            app.MapPost("/api/bizservice/{action}", (string? action, HttpRequest request) =>
+            {
+                return request.DispatchBizService(action);
             });
 
             app.Run();
