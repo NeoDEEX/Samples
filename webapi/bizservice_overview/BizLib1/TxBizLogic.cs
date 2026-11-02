@@ -6,15 +6,20 @@ namespace BizLib1;
 
 #pragma warning disable CA1822 // Mark members as static
 
+[FoxTransaction(FoxTransactionOption.Required)]
 [FoxBizClass]
 public class TxBizLogic : FoxBizBase
 {
     [FoxBizMethod]
-    public void InsertTxData(string data)
+    public void InsertTxData(int pk, string data)
     {
         using TxDataAccess dac = new();
+        if (pk < 0 || pk > 9)
+        {
+            throw new ArgumentOutOfRangeException(nameof(pk), "pk must be between 0 and 9.");
+        }
         ITxDataAccess itf = dac.CreateExecution<ITxDataAccess>();
-        itf.InsertTestData(data);
+        itf.InsertTestData(pk, data);
     }
 
     [FoxBizMethod]

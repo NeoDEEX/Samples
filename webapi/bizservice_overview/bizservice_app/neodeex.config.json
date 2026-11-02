@@ -27,17 +27,21 @@
       "enable": true,
       "loggerName": "PerfLogger"
     },
-    "modules": [ "BizLib1", "BizLib2.dll", "./legacy_biz/*.dll" ],
+    "modules": [ "BizLib1", "BizLib2.dll" ],
     "throwOnError": true,
     "useLoadContext": true,
     "isCollectible": false,
-    "supportJsonType": false,
+    "supportJsonType": true,
     "moduleGroups": {
-      "group1": {
-        "directory": "./modules",
-        "pattern": "*.dll",
+      "groupName1": {
+        "directory": "./legacy_biz/",
+        "pattern": "Biz*.dll",
         "useLoadContext": true,
-        "isCollectible": false
+        "isCollectible": true
+      },
+      "groupName2": {
+        "directory": "./legacy_biz",
+        "pattern": "NonExist*.dll"
       }
     }
   },

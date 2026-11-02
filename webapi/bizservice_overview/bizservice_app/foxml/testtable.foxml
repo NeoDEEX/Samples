@@ -10,7 +10,7 @@
     </statement>
     <statement id="insert">
       <text>
-        INSERT INTO TxTestTable(PK, COL1, COL2) VALUES(999, #col1#, #col2#)
+        INSERT INTO TxTestTable(PK, COL1, COL2) VALUES(990 + #pk#, #col1#, #col2#)
       </text>
     </statement>
     <statement id="update">

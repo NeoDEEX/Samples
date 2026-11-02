@@ -38,6 +38,7 @@ Content-Type: application/json
   "classId": "BizLib1.TxBizLogic",
   "methodId": "InsertTxData",
   "parameters": {
+    "pk": { "$type": "int", "value": 9 },
     "data": "Sample data from BizService"
   }
 }

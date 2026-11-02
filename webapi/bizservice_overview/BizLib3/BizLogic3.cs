@@ -11,11 +11,23 @@ namespace BizLib3;
 [FoxBizClass]
 public class BizLogic3
 {
-    private FoxBizServiceContext? _ctx;
+    private static readonly Version Ver = new(1, 0);
+    private readonly FoxBizServiceContext? _ctx;
+
+    static BizLogic3()
+    {
+        WriteLog("BizLogic3: ver={0}", Ver);
+    }
 
     public BizLogic3()
     {
         _ctx = FoxBizServiceContext.Current;
+    }
+
+    [FoxBizMethod]
+    public decimal Calculate(decimal a, decimal b)
+    {
+        return a + b;
     }
 
     [FoxBizMethod]
@@ -86,5 +98,12 @@ public class BizLogic3
     {
         output = $"Output ECHO: {input}";
         return $"Return ECHO: {input}";
+    }
+
+    [FoxBizMethod]
+    public void DivideByZero()
+    {
+        int d = 0;
+        _ =  100 / d;
     }
 }

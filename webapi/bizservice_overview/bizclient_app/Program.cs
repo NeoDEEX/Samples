@@ -1,4 +1,5 @@
 ﻿using NeoDEEX.ServiceModel.Biz;
+using NeoDEEX.ServiceModel.Client;
 using NeoDEEX.ServiceModel.Client.Biz;
 using Spectre.Console;
 using System.Data;
@@ -13,11 +14,14 @@ internal class Program
         AnsiConsole.MarkupLine("[green]Fox Biz Service BasicSample Client...[/]");
         AnsiConsole.WriteLine();
 
-        await SimpleInvoke();
-        await SearchProduct();
-        await SearchProduct_Untyped();
-        await ParameterBindingTest();
-        await OutputParameterTest();
+        //await SimpleInvoke();
+        //await SearchProduct();
+        //await SearchProduct_Untyped();
+        //await SupportJsonTypeTest();
+        //await ParameterBindingTest();
+        //await OutputParameterTest();
+        //await SimpleExecuteMultiple();
+        await BasicExceptionHandling();
     }
 
     static async Task SimpleInvoke()
@@ -26,7 +30,7 @@ internal class Program
         request.Parameters["message"] = "Hello, Fox Biz Service World!";
         FoxBizServiceClient client = new("api/bizservice");
         FoxBizResponse response = await client.ExecuteAsync(request);
-        AnsiConsole.MarkupLine($"[gray]Biz Service Response:[/] [yellow]{response.Result}[/]");
+        AnsiConsole.MarkupLine($"[yellow]Biz Service Response:[/] [gray]{response.Result}[/]");
     }
 
     // 검색 메서드 호출
@@ -46,7 +50,7 @@ internal class Program
     }
 
     // JsonSerializerOptions 객체는 매번 생성하면 성능이 저하되므로 한번 생성 후 캐시해야 한다.
-    static Lazy<JsonSerializerOptions> _Options = new(() =>
+    static readonly Lazy<JsonSerializerOptions> _Options = new(() =>
     {
         JsonSerializerOptions options = new(NeoDEEX.Text.Json.FoxJsonUtils.DefaultJsonSerializerOptions);
         options.Converters.Add(new NeoDEEX.Text.Json.FoxDataSetConverter());
@@ -70,6 +74,16 @@ internal class Program
         {
             AnsiConsole.MarkupLine($"    [gray]{row["product_name"]}[/]");
         }
+    }
+
+    static async Task SupportJsonTypeTest()
+    {
+        FoxBizRequest request = new("BizLib3.BizLogic3", "Calculate");
+        request.Parameters["a"] = 1.11M;
+        request.Parameters["b"] = 2.22M;
+        FoxBizServiceClient client = new("api/bizservice");
+        FoxBizResponse response = await client.ExecuteAsync(request);
+        AnsiConsole.MarkupLine($"[yellow]SupportJsonType Result:[/] [gray]{response.Result}[/]");
     }
 
     static async Task ParameterBindingTest()
@@ -110,5 +124,45 @@ internal class Program
         FoxBizResponse response = await client.ExecuteAsync(request);
         AnsiConsole.MarkupLine($"[yellow]Return value:[/] [gray]{response.Result}[/]");
         AnsiConsole.MarkupLine($"    [gray]output parameter: output={response["output"]}[/]");
+    }
+
+    static async Task SimpleExecuteMultiple()
+    {
+        FoxBizRequest request0 = new("BizLib1.TxBizLogic", "InitTestData");
+        FoxBizRequest request1 = new("BizLib1.TxBizLogic", "InsertTxData");
+        request1.Parameters["pk"] = 8;
+        request1.Parameters["data"] = "Test Data #888";
+        FoxBizRequest request2 = new("BizLib1.TxBizLogic", "InsertTxData");
+        request2.Parameters["pk"] = 9;
+        request2.Parameters["data"] = "Test Data #999";
+        FoxBizRequest request3 = new("BizLib1.TxBizLogic", "GetTestData");
+        FoxBizRequestCollection requests = [request0, request1, request2, request3];
+        FoxBizServiceClient client = new("api/bizservice");
+        FoxBizResponseCollection responses = await client.ExecuteMultipleAsync(requests);
+        foreach (FoxBizResponse response in responses)
+        {
+            string result = response.Result?.ToString() ?? "(null)";
+            AnsiConsole.MarkupLine($"[yellow]Return value:[/] [gray]{Markup.Escape(result)}[/]");
+        }
+    }
+
+    static async Task BasicExceptionHandling()
+    {
+        FoxBizRequest request = new("BizLib3.BizLogic3", "DivideByZero");
+        FoxBizServiceClient client = new("api/bizservice");
+        AnsiConsole.Markup("[yellow]Service Result:[/] ");
+        try
+        {
+            FoxBizResponse response = client.Execute(request);
+            AnsiConsole.MarkupLine($"[gray]{response.Result}[/]");
+        }
+        catch(FoxRemoteServiceException ex)
+        {
+            AnsiConsole.MarkupLine($"[red]{ex.Message}[/]");
+            string exceptionType = ex.ErrorInfo!.ExceptionType;
+            string stackTrace = ex.ErrorInfo!.StackTrace;
+            AnsiConsole.MarkupLine($"[yellow]ExceptionType:[/] [gray]{exceptionType}[/]");
+            AnsiConsole.MarkupLine($"[yellow]StackTrace:[/]\n[gray]{Markup.Escape(stackTrace)}[/]");
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Fox Biz Service Test Web Client</title>
+</head>
+<body>
+  <h1>Fox Biz Service Test Web Client</h1>
+  <button onclick="calculate()">Calculate!</button>
+  <span id="result"></span>
+</body>
+</html>
+<script>
+  const resultElement = document.getElementById("result");
+  async function calculate() {
+    resultElement.textContent = "Calculating...";
+    const bizRequest = {
+      "classId": "BizLib3.BizLogic3",
+      "methodId": "Calculate",
+      "parameters": {
+        "a": "123.45",
+        "b": "67.89"
+      }
+    };
+    const httpResponse = await fetch("/api/bizservice/execute", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(bizRequest)
+    });
+    const bizResponse = await httpResponse.json();
+    console.log("Biz Service Response:", bizResponse);
+    resultElement.textContent = `Result: ${bizResponse.result}`;
+  }
+</script>

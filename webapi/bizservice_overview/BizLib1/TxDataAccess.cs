@@ -11,10 +11,11 @@ public class TxDataAccess : FoxDacBase, ITxDataAccess
     }
 
     // 트랜잭션 하에서 테스트 데이터를 추가하는 메서드
-    public int InsertTestData(string data)
+    public int InsertTestData(int pk, string data)
     {
         var parameters = new
         {
+            pk,
             col1 = 9,
             col2 = data
         };
@@ -31,6 +32,6 @@ public class TxDataAccess : FoxDacBase, ITxDataAccess
 public interface ITxDataAccess : IDisposable
 {
     DataSet GetTestData();
-    int InsertTestData(string data);
+    int InsertTestData(int pk, string data);
     void InitTestData();
 }

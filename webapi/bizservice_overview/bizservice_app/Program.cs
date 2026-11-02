@@ -25,6 +25,8 @@ public class Program
         // Fox Biz Service 구성
         app.ConfigureBizService();
 
+        // index.html 을 위한 정적 파일 제공
+        app.UseStaticFiles();
         // Configure the HTTP request pipeline.
         app.UseHttpsRedirection();
         app.UseAuthorization();
@@ -45,12 +47,12 @@ public class Program
         {
             return request.DispatchBizServiceHelpPage(action);
         });
-        // Fox Biz Service Web API 엔드 포인트
+        // Fox Biz Service Web API 엔드 포인트(구성 설정 기본 값: useTypeInfo=false)
         app.MapPost("/api/bizservice/{action}", (string? action, HttpRequest request) =>
         {
             return request.DispatchBizService(action);
         });
-
+        // Fox Biz Service Web API 엔드 포인트(명시적인 설정: useTypeInfo=true)
         FoxBizServiceDispatchOptions bizOptions = new()
         {
             UseTypeInfo = true
