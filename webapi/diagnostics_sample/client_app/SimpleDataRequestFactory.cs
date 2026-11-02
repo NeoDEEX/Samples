@@ -5,7 +5,7 @@ using System.Data;
 namespace client_app;
 
 // 예제용 간단한 팩터리 클래스
-internal class SimpleRequestFactory(bool useDiagMode = false) : FoxDataRequestFactory
+internal class SimpleDataRequestFactory(bool useDiagMode = false) : FoxDataRequestFactory
 {
     public bool DiagnosticsMode { get; set; } = useDiagMode;
 

@@ -14,7 +14,7 @@ public class Program
         // 다음 정적 속성 혹은 구성 설정 "webapiServer:returnServerInfo" 속성이
         // true 가 아닌 경우 서버에 관련된 정보는 클라이언트에게 반환되지 않는다.
         // (디폴트 값은 false)
-        FoxWebApiServerConfig.ReturnServerInfo = false;
+        FoxWebApiServerConfig.ReturnServerInfo = true;
 
         // WebApplication 빌더 생성 및 셋업
         var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +23,9 @@ public class Program
         builder.Services.AddAuthorization();
 
         var app = builder.Build();
+
+        // Fox Biz Service 구성
+        app.ConfigureBizService();
 
         // Configure the HTTP request pipeline.
         app.UseHttpsRedirection();
@@ -37,6 +40,17 @@ public class Program
         app.MapPost("/api/dataservice/{action}", (string? action, HttpRequest request) =>
         {
             return request.DispatchDataService(action);
+        });
+
+        // Fox Biz Service Help Page(html) 엔드 포인트
+        app.MapGet("/api/bizservice/{action}", (string? action, HttpRequest request) =>
+        {
+            return request.DispatchBizServiceHelpPage(action);
+        });
+        // Fox Biz Service Web API 엔드 포인트
+        app.MapPost("/api/bizservice/{action}", (string? action, HttpRequest request) =>
+        {
+            return request.DispatchBizService(action);
         });
 
         app.Run();

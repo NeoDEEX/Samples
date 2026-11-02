@@ -35,6 +35,16 @@
       "loggerName": "PerfLogger"
     }
   },
+  "bizService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "ConsoleLogger"
+    },
+    "perfLog": {
+      "enable": true,
+      "loggerName": "PerfLogger2"
+    }
+  },
   "logging": {
     "filter": "Verbose",
     "loggers": {
@@ -53,6 +63,14 @@
         "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
         "properties": {
           "filePrefix": "dataservice_perf",
+          "directory": "logs",
+          "creation": "Daily"
+        }
+      },
+      "PerfLogger2": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "filePrefix": "bizservice_perf",
           "directory": "logs",
           "creation": "Daily"
         }
