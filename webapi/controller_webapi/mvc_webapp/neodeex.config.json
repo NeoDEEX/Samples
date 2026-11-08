@@ -1,0 +1,51 @@
+{
+  "$schema": "https://doc.neodeex.net/neodeex.config.schema.json",
+  "database": {
+    "defaultConnectionString": "PostgreSQL",
+    "connectionStrings": {
+      "PostgreSQL": {
+        "type": "NeoDEEX.Data.NpgsqlClient.FoxNpgsqlDbAccess",
+        "connectionString": "connectionStrings:PostgreSQL",
+        "userSecrets": true
+      }
+    }
+  },
+  "webapiServer": {
+    "useTypeInfo": true,
+    "returnServerInfo": true,
+    "useAuthentication": true,
+    "useAuthorization": true
+  },
+  "dataService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "ConsoleLogger",
+      "detailedDbProfile": false
+    }
+  },
+  "bizService": {
+    "diagnostics": {
+      "enable": true,
+      "loggerName": "ConsoleLogger"
+    }
+  },
+  "logging": {
+    "filter": "Verbose",
+    "loggers": {
+      "mvc_webapp": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "ConsoleLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxConsoleLoggerProvider"
+      },
+      "FileLogger": {
+        "providerType": "NeoDEEX.Diagnostics.Loggers.FoxTextFileLoggerProvider",
+        "properties": {
+          "filePrefix": "dataservice",
+          "directory": "logs",
+          "creation": "Daily"
+        }
+      }
+    }
+  }
+}

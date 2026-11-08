@@ -1,0 +1,47 @@
+@mvc_webapp_HostAddress = http://localhost:5059
+
+# Data Service 기본 테스트
+POST {{mvc_webapp_HostAddress}}/api/dataservice/executedataset
+Accept: application/json
+Content-Type: application/json
+{
+  "queryId": "products.get_all"
+}
+###
+
+# MyDataServiceController 기본 테스트
+POST {{mvc_webapp_HostAddress}}/api/data/executedataset
+Accept: application/json
+Content-Type: application/json
+{
+  "queryId": "products.get_all"
+}
+###
+
+# MyDataServiceController 커스텀 URL 테스트
+GET {{mvc_webapp_HostAddress}}/api/data/products/PROD001
+
+###
+
+# MyDataController upload 테스트
+POST {{mvc_webapp_HostAddress}}/api/data/upload
+Accept: application/json
+Content-Type: multipart/form-data; boundary=-----boundary
+
+-------boundary
+Content-Disposition: form-data; name="request"
+Content-Type: application/json
+
+{
+  "queryId": "products.get",
+  "parameters": {
+    "product_id": "PROD001"
+  }
+}
+-------boundary
+Content-Disposition: form-data; name="file"; filename="upload_file.txt"
+Content-Type: plain/text
+
+This is uploaded file content.
+-------boundary--
+###
