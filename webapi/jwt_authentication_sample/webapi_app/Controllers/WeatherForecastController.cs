@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace webapi_app.Controllers
 {
+    // Fox Biz/Data Service 가 아닌 Web API 도 JWT Bearer 인증을 사용할 수 있다.
+    // AuthorizeAttribute 특성이 사용되면 인증된 사용자만이 API 를 호출할 수 있다.
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

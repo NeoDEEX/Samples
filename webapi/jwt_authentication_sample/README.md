@@ -12,7 +12,7 @@ Fox Biz/Data Service Web API 는 인증 문자열(auth string)이라 부르는 �
 
 반면 JWT 는 [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519)에 정의된 오픈 표준으로서 공개 환경에서 많이 사용되기 때문에 기업 내부 시스템에서도 JWT 기반 인증을 적용하는 경우가 많습니다.
 
-이 예제는 JWT Bearer 인증을 적용하여 Fox Biz/Data Service Web API 를 구현하는 방법에 대해 설명합니다.
+이 예제는 ASP.NET JWT Bearer 인증을 적용하여 Fox Biz/Data Service Web API 를 구현하는 방법에 대해 설명합니다.
 
 ## Fox Authentication & Authorization
 
@@ -27,7 +27,7 @@ app.UseFoxAuthentication();
 
 인증된 사용자로부터의 호출만을 허용하는 권한 확인은 Fox Authorization 에 의해 수행됩니다. Web API 컨트롤러에 `FoxAuthorizeAttribute` 특성을 사용하면 인증되지 않은 사용자의 호출에 대해 `401 Unauthorized` 오류를 반환할 수 있습니다.
 
-## JWT Bearer Authentication
+## ASP.NET JWT Bearer Authentication
 
 JWT Bearer 인증을 수행하기 위해서는 클라이언트가 인증 서버에 사용자 Id/암호 등을 제시하면 JWT 토큰을 발행합니다. 클라이언트는 발급받은 JWT 토큰을 `Authorization` HTTP 헤더에 추가하여 Web API 서버를 호출해야 합니다. Web API 서버는 HTTP 헤더에서 유효한 JWT 토큰이 존재하는지 확인하여 인증을 수행합니다. 이 상황에서 인증서버는 발급자(issuer)가 되며 Web API 서버는 수신자(audience)가 됩니다.
 
@@ -35,7 +35,7 @@ JWT Bearer 인증을 수행하기 위해서는 클라이언트가 인증 서버�
 
 ### Creating JWT token
 
-이 예제와 같이 간단한 예제나 간단한 독립 어플리케이션에서는 발급자와 수신자가 동일하게 됩니다. 이 경우 OpenID 와 같은 표준적인 통신 방식을 사용하지 않으며 Web API 서버가 login 과 같은 API 에서 JWT 토큰을 발행합니다.
+이 예제와 같이 간단한 예제나 간단한 독립 어플리케이션에서는 발급자와 수신자가 동일하게 됩니다. 이 경우 OpenID 와 같은 표준적인 방식을 사용하지 않으며 Web API 서버가 login 과 같은 API 에서 JWT 토큰을 발행합니다.
 
 ```cs
 // Fox Web API 를 호출하기 위해 로그인을 호출하여 JWT 토큰을 발급합니다.
