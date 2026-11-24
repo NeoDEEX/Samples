@@ -33,10 +33,10 @@
     </statement>
     <statement id="test_setup">
       <text>
-        DELETE FROM t_products WHERE product_name = 'Test_Product';
+        DELETE FROM t_products WHERE product_name = 'Test_Product' OR product_id >= 'PROD100';
         INSERT INTO t_products(product_id, product_name, unit_price)
         VALUES  ('PROD100', 'Test_Product', 0),
-                ('PROD101', 'Test_Product', 0);
+        ('PROD101', 'Test_Product', 0);
       </text>
     </statement>
   </statements>

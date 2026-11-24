@@ -1,17 +1,38 @@
 @mvc_webapp_HostAddress = http://localhost:5059
 
+# 테스트 DB 초기화
+POST {{mvc_webapp_HostAddress}}/api/my_service/executenonquery
+Accept: application/json
+FoxRest-Authenticate: ENCYPTED__rPKMZf3XqHS/F/81x0riYTbr2nEdG8mMNWJurK/4IPw=
+Content-Type: application/json
+{
+  "queryId": "products.test_setup"
+}
+###
+
+# 로그인
+POST {{mvc_webapp_HostAddress}}/api/my_service/login
+Content-Type: application/json
+{
+  "userName": "test_user",
+  "password": "password"
+}
+###
+
 # Data Service 기본 테스트
 POST {{mvc_webapp_HostAddress}}/api/dataservice/executedataset
 Accept: application/json
+FoxRest-Authenticate: ENCYPTED__rPKMZf3XqHS/F/81x0riYTbr2nEdG8mMNWJurK/4IPw=
 Content-Type: application/json
 {
   "queryId": "products.get_all"
 }
 ###
 
-# MyDataServiceController 기본 테스트
-POST {{mvc_webapp_HostAddress}}/api/data/executedataset
+# MyDataServiceController 커스텀 API 테스트
+POST {{mvc_webapp_HostAddress}}/api/my_service/executedataset
 Accept: application/json
+FoxRest-Authenticate: ENCYPTED__rPKMZf3XqHS/F/81x0riYTbr2nEdG8mMNWJurK/4IPw=
 Content-Type: application/json
 {
   "queryId": "products.get_all"
@@ -19,13 +40,14 @@ Content-Type: application/json
 ###
 
 # MyDataServiceController 커스텀 URL 테스트
-GET {{mvc_webapp_HostAddress}}/api/data/products/PROD001
+GET {{mvc_webapp_HostAddress}}/api/my_service/products/PROD001
 
 ###
 
 # MyDataController upload 테스트
-POST {{mvc_webapp_HostAddress}}/api/data/upload
+POST {{mvc_webapp_HostAddress}}/api/my_service/upload
 Accept: application/json
+FoxRest-Authenticate: ENCYPTED__rPKMZf3XqHS/F/81x0riYTbr2nEdG8mMNWJurK/4IPw=
 Content-Type: multipart/form-data; boundary=-----boundary
 
 -------boundary

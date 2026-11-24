@@ -11,10 +11,12 @@
     }
   },
   "webapiServer": {
-    "useTypeInfo": true,
-    "returnServerInfo": true,
+    "useTypeInfo": false,
+    "returnServerInfo": false,
+    "detailedErrorInfo": true,
     "useAuthentication": true,
-    "useAuthorization": true
+    "useAuthorization": false,
+    "helpPageEnabled": true
   },
   "dataService": {
     "diagnostics": {
